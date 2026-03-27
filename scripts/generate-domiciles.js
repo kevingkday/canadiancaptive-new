@@ -46,11 +46,21 @@ function jurisdictionCategory(jurisdiction) {
     return 'Other Onshore';
 }
 
+function escapeHtml(value) {
+    return String(value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;')
+        .replace(/\$/g, '&#36;');
+}
+
 function buildCapitalRows(minCapital) {
     return Object.entries(minCapital).map(([type, amount]) =>
         `                            <tr class="border-b border-outline-variant/10 last:border-0">
-                                <td class="py-4 pr-8 text-on-surface font-medium">${type}</td>
-                                <td class="py-4 text-secondary">${amount}</td>
+                                <td class="py-4 pr-8 text-on-surface font-medium">${escapeHtml(type)}</td>
+                                <td class="py-4 text-secondary">${escapeHtml(amount)}</td>
                             </tr>`
     ).join('\n');
 }
@@ -450,13 +460,13 @@ function generateDirectoryPage(domiciles) {
                     <a href="domiciles/${slug}.html"
                         class="bg-surface-container-lowest p-8 rounded-xl hover:shadow-md transition-all group border border-outline-variant/10 block">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-bold text-on-surface group-hover:text-primary transition-colors">${d.name}</h3>
+                            <h3 class="text-lg font-bold text-on-surface group-hover:text-primary transition-colors">${escapeHtml(d.name)}</h3>
                             <span class="material-symbols-outlined text-secondary group-hover:text-primary group-hover:translate-x-1 transition-all text-sm">arrow_forward</span>
                         </div>
-                        <span class="inline-block px-2 py-0.5 rounded text-[0.65rem] font-semibold uppercase tracking-wider ${badge.bg} ${badge.text} ${badge.border} border mb-3">${d.jurisdiction}</span>
-                        <p class="text-secondary text-sm leading-relaxed mb-4 line-clamp-2">${d.summary.substring(0, 140)}...</p>
+                        <span class="inline-block px-2 py-0.5 rounded text-[0.65rem] font-semibold uppercase tracking-wider ${badge.bg} ${badge.text} ${badge.border} border mb-3">${escapeHtml(d.jurisdiction)}</span>
+                        <p class="text-secondary text-sm leading-relaxed mb-4 line-clamp-2">${escapeHtml(d.summary.substring(0, 140))}...</p>
                         <div class="text-xs text-on-surface-variant">
-                            <span class="font-semibold">${firstCapitalKey}:</span> ${firstCapitalVal}
+                            <span class="font-semibold">${escapeHtml(firstCapitalKey)}:</span> ${escapeHtml(firstCapitalVal)}
                         </div>
                     </a>`;
         }).join('\n');

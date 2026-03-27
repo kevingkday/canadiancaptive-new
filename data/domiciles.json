@@ -137,13 +137,22 @@
     "name": "Cayman Islands",
     "summary": "The Cayman Islands is the world's second-largest captive domicile and the leader in healthcare-related medical malpractice captives. Governed by the Insurance Law of 2010, it offers a flexible legislative environment that aligns with global industry standards. Captives are primarily categorized under Class B, which is further divided into four subgroups based on the origin of net premiums.",
     "jurisdiction": "Offshore",
-    "legislation": "Insurance Law 2010",
+    "legislation": "Insurance Act, 2010 (as amended)",
     "min_capital": {
-      "Class B(i)": "$100,000",
-      "Class B(ii)": "$150,000",
-      "Class B(iii)": "$200,000"
+      "Class B(i) General": "US$100,000",
+      "Class B(i) Long-term": "US$200,000",
+      "Class B(i) Composite": "US$300,000",
+      "Class B(ii) General": "US$150,000",
+      "Class B(ii) Long-term": "US$300,000",
+      "Class B(ii) Composite": "US$450,000",
+      "Class B(iii) General": "US$200,000",
+      "Class B(iii) Long-term": "US$400,000",
+      "Class B(iii) Composite": "US$600,000",
+      "Class C": "US$500,000"
     },
-    "tax_notes": "91% of captive business originates from the US"
+    "tax_notes": "Tax-neutral jurisdiction with no corporate or personal taxes; additional regulatory capital may be required depending on the business plan.",
+    "contact_name": "Insurance Division, Cayman Islands Monetary Authority",
+    "contact_email": "insurance@cima.ky"
   },
   {
     "name": "China",
@@ -739,7 +748,9 @@
       "RRG": "$1,000,000",
       "Association / Agency": "$500,000"
     },
-    "tax_notes": "Largest US captive domicile; mature tax structure"
+    "tax_notes": "Largest US captive domicile; mature tax structure",
+    "contact_name": "Christine Brown, Deputy Commissioner, Captive Insurance Division",
+    "contact_email": "christine.brown@vermont.gov"
   },
   {
     "name": "Virginia",
