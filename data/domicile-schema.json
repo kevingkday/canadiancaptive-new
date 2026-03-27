@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CanadianCaptive Domicile",
+  "type": "object",
+  "required": [
+    "slug",
+    "name",
+    "summary",
+    "jurisdiction",
+    "legislation",
+    "min_capital",
+    "tax_notes"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "name": { "type": "string", "minLength": 1 },
+    "summary": { "type": "string", "minLength": 1 },
+    "jurisdiction": { "type": "string", "minLength": 1 },
+    "legislation": { "type": "string", "minLength": 1 },
+    "min_capital": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "type": "string" }
+    },
+    "tax_notes": { "type": "string", "minLength": 1 },
+    "contact_name": { "type": ["string", "null"] },
+    "contact_email": { "type": ["string", "null"] },
+    "last_verified": {
+      "type": ["string", "null"],
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "source_urls": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" }
+    }
+  },
+  "additionalProperties": false
+}
