@@ -1,0 +1,27 @@
+{
+  "mode": "draft",
+  "sourcePriority": [
+    "official_regulator",
+    "official_domicile",
+    "official_legislation",
+    "reputable_industry_source"
+  ],
+  "autoUpdateFields": [
+    "legislation",
+    "min_capital",
+    "tax_notes"
+  ],
+  "manualReviewFields": [
+    "summary",
+    "jurisdiction",
+    "contact_name",
+    "contact_email"
+  ],
+  "coverage": {
+    "enabled": "all"
+  },
+  "conflictPolicy": "flag_no_change",
+  "requireSourceUrls": true,
+  "generatePagesAfterUpdate": true,
+  "writeReviewReport": true
+}
