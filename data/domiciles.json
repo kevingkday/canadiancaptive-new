@@ -110,7 +110,12 @@
       "Class 2 / Class B": "$250,000 floor",
       "Class 3": "$1,000,000 floor"
     },
-    "tax_notes": "Tax-competitive environment"
+    "tax_notes": "Tax-competitive environment",
+    "last_verified": "2026-03-27",
+    "source_urls": [
+      "https://cdn.bma.bm/documents/2025-03-24-13-49-51-2023-Captive-Report.pdf",
+      "https://cdn.bma.bm/documents/2023-11-14-13-37-59-Insurance-Act-1978.pdf"
+    ]
   },
   {
     "name": "British Columbia",
@@ -120,7 +125,15 @@
     "min_capital": {
       "Minimum Capital and Reserve": "300,000 CAD"
     },
-    "tax_notes": "Premium taxes set by the province where risk is located"
+    "tax_notes": "Premium taxes set by the province where risk is located",
+    "contact_name": "BC Financial Services Authority",
+    "contact_email": null,
+    "last_verified": "2026-03-27",
+    "source_urls": [
+      "https://www.bcfsa.ca/industry-resources/insurance-resources",
+      "https://www.bcfsa.ca/about-us/contact-us",
+      "https://www.bcfsa.ca/industry-resources/insurance-resources/insurance-regulatory-information/insurance-regulatory-statements"
+    ]
   },
   {
     "name": "British Virgin Islands",
