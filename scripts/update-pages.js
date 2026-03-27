@@ -27,34 +27,23 @@ for (const file of files) {
     let content = fs.readFileSync(file, 'utf8');
     const original = content;
 
-    // 1. Remove Regulatory link
+    // 1. Update copyright text
     content = content.replace(
-        /\s*<a class="text-slate-600 hover:text-red-600 transition-colors font-sans antialiased tracking-tight"\s*\n?\s*href="#">Regulatory<\/a>/g,
-        ''
+        /CanadianCaptive Consultancy/g,
+        'CanadianCaptive.com'
     );
 
-    // 2. Remove Compliance link
+    // 2. Update header title from "CanadianCaptive" to "CanadianCaptive.com"
+    // Match the div-based header (non-index pages)
     content = content.replace(
-        /\s*<a class="text-slate-600 hover:text-red-600 transition-colors font-sans antialiased tracking-tight"\s*\n?\s*href="#">Compliance<\/a>/g,
-        ''
+        /<div class="text-2xl font-bold tracking-tighter text-red-700">\s*\n?\s*CanadianCaptive\s*\n?\s*<\/div>/g,
+        '<a href="index.html"\n                class="text-2xl font-bold tracking-tighter text-red-700 hover:opacity-80 transition-opacity">\n                CanadianCaptive.com\n            </a>'
     );
 
-    // 3. Remove Office column in footer
+    // Also catch if it's already an <a> but says "CanadianCaptive" without .com
     content = content.replace(
-        /\s*<div>\s*\n?\s*<h4 class="font-bold text-slate-900 mb-6">Office<\/h4>[\s\S]*?Contact\s*\n?\s*Us<\/a>\s*\n?\s*<\/div>/g,
-        ''
-    );
-
-    // 4. Update copyright year from 2024 to 2026 and add powered by
-    content = content.replace(
-        /&copy; 2024 CanadianCaptive Consultancy\. All rights\s*\n?\s*reserved\.\s*<\/p>/g,
-        '&copy; 2026 CanadianCaptive Consultancy. All rights\n                reserved. Powered by <a href="https://kevinday.ai" target="_blank" rel="noopener noreferrer" class="text-red-700 hover:underline">kevinday.ai</a></p>'
-    );
-
-    // 5. Remove search icon if present
-    content = content.replace(
-        /\s*<button class="text-slate-400 hover:text-red-600 transition-colors">\s*\n?\s*<span class="material-symbols-outlined">search<\/span>\s*\n?\s*<\/button>/g,
-        ''
+        /(<a[^>]*class="text-2xl font-bold tracking-tighter text-red-700[^"]*"[^>]*>)\s*\n?\s*CanadianCaptive\s*\n?\s*(<\/a>)/g,
+        '$1\n                CanadianCaptive.com\n            $2'
     );
 
     if (content !== original) {
