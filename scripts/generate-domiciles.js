@@ -46,21 +46,17 @@ function jurisdictionCategory(jurisdiction) {
     return 'Other Onshore';
 }
 
-function escapeHtml(value) {
+function escapeTemplateValue(value) {
     return String(value)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;')
-        .replace(/\$/g, '&#36;');
+        .replace(/`/g, '&#96;')
+        .replace(/\$\{/g, '&#36;{');
 }
 
 function buildCapitalRows(minCapital) {
     return Object.entries(minCapital).map(([type, amount]) =>
         `                            <tr class="border-b border-outline-variant/10 last:border-0">
-                                <td class="py-4 pr-8 text-on-surface font-medium">${escapeHtml(type)}</td>
-                                <td class="py-4 text-secondary">${escapeHtml(amount)}</td>
+                                <td class="py-4 pr-8 text-on-surface font-medium">${escapeTemplateValue(type)}</td>
+                                <td class="py-4 text-secondary">${escapeTemplateValue(amount)}</td>
                             </tr>`
     ).join('\n');
 }
@@ -138,7 +134,7 @@ function buildNav(pathPrefix, activePage) {
     return `    <nav class="fixed top-0 w-full z-50 glass-nav shadow-sm">
         <div class="flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
             <a href="${pathPrefix}index.html" class="text-2xl font-bold tracking-tighter text-red-700 hover:opacity-80 transition-opacity">
-                CanadianCaptive
+                CanadianCaptive.com
             </a>
             <div class="hidden md:flex items-center gap-x-8">
                 <a class="${homeActive ? 'text-red-700 font-semibold border-b-2 border-red-700 pb-1' : 'text-slate-600 hover:text-red-600 transition-colors'} font-sans antialiased tracking-tight"
@@ -161,10 +157,6 @@ function buildNav(pathPrefix, activePage) {
                         </div>
                     </div>
                 </div>
-                <a class="text-slate-600 hover:text-red-600 transition-colors font-sans antialiased tracking-tight"
-                    href="#">Regulatory</a>
-                <a class="text-slate-600 hover:text-red-600 transition-colors font-sans antialiased tracking-tight"
-                    href="#">Compliance</a>
             </div>
             <div class="flex items-center gap-6">
                 <button
@@ -206,16 +198,10 @@ function buildFooter(pathPrefix) {
                             href="${pathPrefix}terms-of-service.html">Terms of Service</a></li>
                 </ul>
             </div>
-            <div>
-                <h4 class="font-bold text-slate-900 mb-6">Office</h4>
-                <p class="text-slate-500 text-sm mb-4">Vancouver, British Columbia<br />Canada</p>
-                <a class="text-red-700 font-bold underline text-sm" href="mailto:hello@canadiancaptive.com">Contact
-                    Us</a>
-            </div>
         </div>
         <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-slate-500 text-xs opacity-80">&copy; 2024 CanadianCaptive Consultancy. All rights
-                reserved.</p>
+            <p class="text-slate-500 text-xs opacity-80">&copy; 2026 CanadianCaptive.com. All rights
+                reserved. Powered by <a href="https://kevinday.ai" target="_blank" rel="noopener noreferrer" class="text-red-700 hover:underline">kevinday.ai</a></p>
             <div class="flex items-center gap-4">
                 <a href="https://x.com/canadiancaptive" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-700 transition-colors" aria-label="X (Twitter)">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -460,13 +446,13 @@ function generateDirectoryPage(domiciles) {
                     <a href="domiciles/${slug}.html"
                         class="bg-surface-container-lowest p-8 rounded-xl hover:shadow-md transition-all group border border-outline-variant/10 block">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-bold text-on-surface group-hover:text-primary transition-colors">${escapeHtml(d.name)}</h3>
+                            <h3 class="text-lg font-bold text-on-surface group-hover:text-primary transition-colors">${escapeTemplateValue(d.name)}</h3>
                             <span class="material-symbols-outlined text-secondary group-hover:text-primary group-hover:translate-x-1 transition-all text-sm">arrow_forward</span>
                         </div>
-                        <span class="inline-block px-2 py-0.5 rounded text-[0.65rem] font-semibold uppercase tracking-wider ${badge.bg} ${badge.text} ${badge.border} border mb-3">${escapeHtml(d.jurisdiction)}</span>
-                        <p class="text-secondary text-sm leading-relaxed mb-4 line-clamp-2">${escapeHtml(d.summary.substring(0, 140))}...</p>
+                        <span class="inline-block px-2 py-0.5 rounded text-[0.65rem] font-semibold uppercase tracking-wider ${badge.bg} ${badge.text} ${badge.border} border mb-3">${escapeTemplateValue(d.jurisdiction)}</span>
+                        <p class="text-secondary text-sm leading-relaxed mb-4 line-clamp-2">${escapeTemplateValue(d.summary.substring(0, 140))}...</p>
                         <div class="text-xs text-on-surface-variant">
-                            <span class="font-semibold">${escapeHtml(firstCapitalKey)}:</span> ${escapeHtml(firstCapitalVal)}
+                            <span class="font-semibold">${escapeTemplateValue(firstCapitalKey)}:</span> ${escapeTemplateValue(firstCapitalVal)}
                         </div>
                     </a>`;
         }).join('\n');
