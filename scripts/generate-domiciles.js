@@ -128,7 +128,7 @@ function buildNav(pathPrefix, activePage) {
     return `    <nav class="fixed top-0 w-full z-50 glass-nav shadow-sm">
         <div class="flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
             <a href="${pathPrefix}index.html" class="text-2xl font-bold tracking-tighter text-red-700 hover:opacity-80 transition-opacity">
-                CanadianCaptive
+                CanadianCaptive.com
             </a>
             <div class="hidden md:flex items-center gap-x-8">
                 <a class="${homeActive ? 'text-red-700 font-semibold border-b-2 border-red-700 pb-1' : 'text-slate-600 hover:text-red-600 transition-colors'} font-sans antialiased tracking-tight"
@@ -168,9 +168,9 @@ function buildNav(pathPrefix, activePage) {
 
 function buildFooter(pathPrefix) {
     return `    <footer class="w-full border-t border-slate-200 bg-slate-50">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-8 py-16">
             <div class="md:col-span-1">
-                <div class="text-xl font-black text-slate-900 mb-6">CanadianCaptive</div>
+                <div class="text-xl font-black text-slate-900 mb-6">CanadianCaptive.com</div>
                 <p class="text-slate-500 text-sm leading-relaxed">
                     Setting the standard for excellence in Canadian captive insurance consultancy. Experts in risk
                     sovereignty and financial stability.
@@ -196,16 +196,10 @@ function buildFooter(pathPrefix) {
                             href="${pathPrefix}terms-of-service.html">Terms of Service</a></li>
                 </ul>
             </div>
-            <div>
-                <h4 class="font-bold text-slate-900 mb-6">Office</h4>
-                <p class="text-slate-500 text-sm mb-4">Vancouver, British Columbia<br />Canada</p>
-                <a class="text-red-700 font-bold underline text-sm" href="mailto:hello@canadiancaptive.com">Contact
-                    Us</a>
-            </div>
         </div>
         <div class="max-w-7xl mx-auto px-8 py-8 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p class="text-slate-500 text-xs opacity-80">&copy; 2024 CanadianCaptive Consultancy. All rights
-                reserved.</p>
+            <p class="text-slate-500 text-xs opacity-80">&copy; 2026 CanadianCaptive.com. All rights
+                reserved. Powered by <a href="https://kevinday.ai" target="_blank" rel="noopener noreferrer" class="text-red-700 hover:underline">kevinday.ai</a></p>
             <div class="flex items-center gap-4">
                 <a href="https://x.com/canadiancaptive" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-slate-700 transition-colors" aria-label="X (Twitter)">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -239,7 +233,7 @@ function generateDomicilePage(domicile, allDomiciles) {
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>${domicile.name} Domicile | CanadianCaptive</title>
+    <title>${domicile.name} Domicile | CanadianCaptive.com</title>
     <meta name="description" content="${domicile.summary.substring(0, 160).replace(/"/g, '&quot;')}..." />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
@@ -490,7 +484,7 @@ ${cardsHTML}
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Global Captive Domiciles | CanadianCaptive</title>
+    <title>Global Captive Domiciles | CanadianCaptive.com</title>
     <meta name="description" content="Explore 60+ captive insurance domiciles worldwide. Compare jurisdictions, capital requirements, and tax environments to find the right home for your captive." />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />

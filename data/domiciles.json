@@ -25,6 +25,21 @@
     "tax_notes": "$100,000 maximum cap; no tax on dormant captives"
   },
   {
+    "name": "Alberta",
+    "summary": "Alberta does not have dedicated captive insurance legislation, but captives can be established under the province's general Insurance Act with approval from the Alberta Superintendent of Insurance. The province's strong energy and natural resource sectors create significant demand for alternative risk transfer mechanisms. Alberta offers a business-friendly regulatory environment and competitive corporate tax rates, making it an emerging consideration for Canadian enterprises exploring captive solutions.",
+    "jurisdiction": "Onshore (Canada)",
+    "legislation": "Alberta Insurance Act (General Provisions)",
+    "min_capital": {
+      "General Requirement": "Subject to Superintendent approval"
+    },
+    "tax_notes": "Provincial premium taxes apply; competitive corporate tax rate of 8%",
+    "slug": "alberta",
+    "contact_name": "Alberta Superintendent of Insurance",
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
+  },
+  {
     "name": "Anguilla",
     "summary": "Anguilla's Insurance Act provides a comprehensive framework for domestic, offshore, and captive insurance, notably including a specific 2018 provision for producer-affiliated reinsurance companies. The domicile offers five sub-categories of Class B licenses, ranging from unrestricted foreign business to single-owner captives. Unless maintaining a permanent local staff, insurers are required to appoint a licensed insurance manager.",
     "jurisdiction": "Offshore",
@@ -110,7 +125,12 @@
       "Class 2 / Class B": "$250,000 floor",
       "Class 3": "$1,000,000 floor"
     },
-    "tax_notes": "Tax-competitive environment"
+    "tax_notes": "Tax-competitive environment",
+    "last_verified": "2026-03-27",
+    "source_urls": [
+      "https://cdn.bma.bm/documents/2025-03-24-13-49-51-2023-Captive-Report.pdf",
+      "https://cdn.bma.bm/documents/2023-11-14-13-37-59-Insurance-Act-1978.pdf"
+    ]
   },
   {
     "name": "British Columbia",
@@ -120,7 +140,14 @@
     "min_capital": {
       "Minimum Capital and Reserve": "300,000 CAD"
     },
-    "tax_notes": "Premium taxes set by the province where risk is located"
+    "tax_notes": "Premium taxes set by the province where risk is located",
+    "contact_name": "BC Financial Services Authority",
+    "last_verified": "2026-03-27",
+    "source_urls": [
+      "https://www.bcfsa.ca/industry-resources/insurance-resources",
+      "https://www.bcfsa.ca/about-us/contact-us",
+      "https://www.bcfsa.ca/industry-resources/insurance-resources/insurance-regulatory-information/insurance-regulatory-statements"
+    ]
   },
   {
     "name": "British Virgin Islands",
@@ -143,7 +170,9 @@
       "Class B(ii)": "$150,000",
       "Class B(iii)": "$200,000"
     },
-    "tax_notes": "91% of captive business originates from the US"
+    "tax_notes": "91% of captive business originates from the US",
+    "contact_name": "Insurance Division, Cayman Islands Monetary Authority",
+    "contact_email": "insurance@cima.ky"
   },
   {
     "name": "China",
@@ -739,7 +768,9 @@
       "RRG": "$1,000,000",
       "Association / Agency": "$500,000"
     },
-    "tax_notes": "Largest US captive domicile; mature tax structure"
+    "tax_notes": "Largest US captive domicile; mature tax structure",
+    "contact_name": "Christine Brown, Deputy Commissioner, Captive Insurance Division",
+    "contact_email": "christine.brown@vermont.gov"
   },
   {
     "name": "Virginia",
