@@ -18,13 +18,17 @@ const DOMICILES_DIR = path.join(ROOT, 'domiciles');
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-function slugify(name) {
-    return name.toLowerCase()
+function fallbackSlugify(name) {
+    return String(name).toLowerCase()
         .replace(/^the\s+/i, '')
         .replace(/[']/g, '')
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/-+/g, '-')
         .replace(/^-|-$/g, '');
+}
+
+function getSlug(domicile) {
+    return domicile.slug || fallbackSlugify(domicile.name);
 }
 
 function jurisdictionBadgeColor(jurisdiction) {
@@ -366,14 +370,14 @@ ${capitalRows}
         <section class="py-12 bg-surface border-t border-outline-variant/10">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="flex justify-between items-center">
-                    ${prev ? `<a href="${slugify(prev.name)}.html" class="flex items-center gap-2 text-secondary hover:text-primary transition-colors group">
+                    ${prev ? `<a href="${getSlug(prev)}.html" class="flex items-center gap-2 text-secondary hover:text-primary transition-colors group">
                         <span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
                         <div>
                             <div class="text-xs uppercase tracking-wider opacity-60">Previous</div>
                             <div class="font-semibold">${prev.name}</div>
                         </div>
                     </a>` : '<div></div>'}
-                    ${next ? `<a href="${slugify(next.name)}.html" class="flex items-center gap-2 text-secondary hover:text-primary transition-colors text-right group">
+                    ${next ? `<a href="${getSlug(next)}.html" class="flex items-center gap-2 text-secondary hover:text-primary transition-colors text-right group">
                         <div>
                             <div class="text-xs uppercase tracking-wider opacity-60">Next</div>
                             <div class="font-semibold">${next.name}</div>
@@ -438,7 +442,7 @@ function generateDirectoryPage(domiciles) {
         if (!items || items.length === 0) continue;
         const icon = categoryIcons[cat] || 'public';
         const cardsHTML = items.map(d => {
-            const slug = slugify(d.name);
+            const slug = getSlug(d);
             const badge = jurisdictionBadgeColor(d.jurisdiction);
             const firstCapitalKey = Object.keys(d.min_capital)[0];
             const firstCapitalVal = d.min_capital[firstCapitalKey];
@@ -564,7 +568,7 @@ if (!fs.existsSync(DOMICILES_DIR)) {
 
 // Generate individual pages
 domiciles.forEach((domicile) => {
-    const slug = slugify(domicile.name);
+    const slug = getSlug(domicile);
     const filename = `${slug}.html`;
     const filepath = path.join(DOMICILES_DIR, filename);
     const html = generateDomicilePage(domicile, domiciles);

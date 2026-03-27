@@ -10,7 +10,12 @@
       "Class 3 (Group/Association)": "$500,000",
       "Class 4": "$1,000,000"
     },
-    "tax_notes": "0% tax until 2065; 5% VAT may apply"
+    "tax_notes": "0% tax until 2065; 5% VAT may apply",
+    "slug": "abu-dhabi",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Alabama",
@@ -22,7 +27,12 @@
       "RRG / Industrial Insured": "$500,000",
       "Reciprocals": "$1,000,000"
     },
-    "tax_notes": "$100,000 maximum cap; no tax on dormant captives"
+    "tax_notes": "$100,000 maximum cap; no tax on dormant captives",
+    "slug": "alabama",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Anguilla",
@@ -33,7 +43,12 @@
       "Property and Casualty": "$100,000",
       "Life and Health": "$200,000"
     },
-    "tax_notes": "Tax-neutral structures for Class B insurers"
+    "tax_notes": "Tax-neutral structures for Class B insurers",
+    "slug": "anguilla",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Arizona",
@@ -45,7 +60,12 @@
       "Association / Agency / Cell": "$500,000",
       "RRG": "$500,000"
     },
-    "tax_notes": "No premium or state income taxes; flat annual license fee"
+    "tax_notes": "No premium or state income taxes; flat annual license fee",
+    "slug": "arizona",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Arkansas",
@@ -58,7 +78,12 @@
       "Producer Reinsurance": "$300k Cap / $300k Surplus",
       "Association": "$400k Cap / $350k Surplus"
     },
-    "tax_notes": "$100,000 maximum annual tax liability"
+    "tax_notes": "$100,000 maximum annual tax liability",
+    "slug": "arkansas",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Aruba",
@@ -68,7 +93,12 @@
     "min_capital": {
       "General": "Subject to Central Bank review and actuarial report"
     },
-    "tax_notes": "Requires annual audited financial statements"
+    "tax_notes": "Requires annual audited financial statements",
+    "slug": "aruba",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "The Bahamas",
@@ -78,7 +108,12 @@
     "min_capital": {
       "Share Capital": "$100,000 (additional regulatory capital may be required)"
     },
-    "tax_notes": "$2,500 annual renewal fee for standalone captives"
+    "tax_notes": "$2,500 annual renewal fee for standalone captives",
+    "slug": "bahamas",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Bahrain",
@@ -88,7 +123,12 @@
     "min_capital": {
       "Captive": "Risk-based; lower than traditional insurers unless third-party liability is involved"
     },
-    "tax_notes": "Competitive regulatory environment"
+    "tax_notes": "Competitive regulatory environment",
+    "slug": "bahrain",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Barbados",
@@ -98,7 +138,12 @@
     "min_capital": {
       "Insurance Companies": "$125,000"
     },
-    "tax_notes": "0% for Class 1; 2% for Class 2 and Class 3 entities"
+    "tax_notes": "0% for Class 1; 2% for Class 2 and Class 3 entities",
+    "slug": "barbados",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Bermuda",
@@ -115,7 +160,10 @@
     "source_urls": [
       "https://cdn.bma.bm/documents/2025-03-24-13-49-51-2023-Captive-Report.pdf",
       "https://cdn.bma.bm/documents/2023-11-14-13-37-59-Insurance-Act-1978.pdf"
-    ]
+    ],
+    "slug": "bermuda",
+    "contact_name": null,
+    "contact_email": null
   },
   {
     "name": "British Columbia",
@@ -133,7 +181,8 @@
       "https://www.bcfsa.ca/industry-resources/insurance-resources",
       "https://www.bcfsa.ca/about-us/contact-us",
       "https://www.bcfsa.ca/industry-resources/insurance-resources/insurance-regulatory-information/insurance-regulatory-statements"
-    ]
+    ],
+    "slug": "british-columbia"
   },
   {
     "name": "British Virgin Islands",
@@ -144,7 +193,12 @@
       "P&C Business": "$100,000",
       "Life and Health": "$200,000"
     },
-    "tax_notes": "No corporate income tax"
+    "tax_notes": "No corporate income tax",
+    "slug": "british-virgin-islands",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Cayman Islands",
@@ -165,7 +219,10 @@
     },
     "tax_notes": "Tax-neutral jurisdiction with no corporate or personal taxes; additional regulatory capital may be required depending on the business plan.",
     "contact_name": "Insurance Division, Cayman Islands Monetary Authority",
-    "contact_email": "insurance@cima.ky"
+    "contact_email": "insurance@cima.ky",
+    "slug": "cayman-islands",
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "China",
@@ -175,7 +232,12 @@
     "min_capital": {
       "Minimum Requirement": "RMB 200 million (~$29M)"
     },
-    "tax_notes": "25% Corporate tax; 6% VAT"
+    "tax_notes": "25% Corporate tax; 6% VAT",
+    "slug": "china",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Connecticut",
@@ -187,7 +249,12 @@
       "RRG": "$1,000,000",
       "Others": "$500,000"
     },
-    "tax_notes": "$7,500 minimum; $200,000 maximum tax"
+    "tax_notes": "$7,500 minimum; $200,000 maximum tax",
+    "slug": "connecticut",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Cook Islands",
@@ -197,7 +264,12 @@
     "min_capital": {
       "Minimum Requirement": "NZD 100,000 (~$71,500)"
     },
-    "tax_notes": "20% worldwide income tax (as of 2022)"
+    "tax_notes": "20% worldwide income tax (as of 2022)",
+    "slug": "cook-islands",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Delaware",
@@ -209,7 +281,12 @@
       "RRG": "$1,000,000",
       "Association": "$750,000"
     },
-    "tax_notes": "$5,000 minimum tax ($3,500 for series captives)"
+    "tax_notes": "$5,000 minimum tax ($3,500 for series captives)",
+    "slug": "delaware",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "District of Columbia",
@@ -221,7 +298,12 @@
       "Others": "$400,000",
       "Cells": "No minimum (Commissioner discretionary)"
     },
-    "tax_notes": "Favorable examination costs compared to other domiciles"
+    "tax_notes": "Favorable examination costs compared to other domiciles",
+    "slug": "district-of-columbia",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Dubai",
@@ -233,7 +315,12 @@
       "Class 2": "$500,000",
       "Class 3 (Association)": "$1,000,000"
     },
-    "tax_notes": "0% tax until 2054; waived commercial license fees"
+    "tax_notes": "0% tax until 2054; waived commercial license fees",
+    "slug": "dubai",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Federated States of Micronesia",
@@ -243,7 +330,12 @@
     "min_capital": {
       "Single Parent / Group": "$100,000 (subject to Commissioner increase)"
     },
-    "tax_notes": "0.05% premium tax; 21% net income tax"
+    "tax_notes": "0.05% premium tax; 21% net income tax",
+    "slug": "federated-states-of-micronesia",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Florida",
@@ -253,7 +345,12 @@
     "min_capital": {
       "Requirement": "Low relative requirements (varies by type)"
     },
-    "tax_notes": "Requires annual reporting compliance"
+    "tax_notes": "Requires annual reporting compliance",
+    "slug": "florida",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "France",
@@ -265,7 +362,12 @@
       "Insurance (Life)": "EUR 3.6 million",
       "Reinsurance": "EUR 1.2 million"
     },
-    "tax_notes": "Freedom of Service access across the EU"
+    "tax_notes": "Freedom of Service access across the EU",
+    "slug": "france",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Georgia",
@@ -276,7 +378,12 @@
       "Pure / Agency": "$250,000",
       "RRG / Industrial Insured": "$500,000"
     },
-    "tax_notes": "Max tax of $100,000 per year; reinsurance tax may be waived"
+    "tax_notes": "Max tax of $100,000 per year; reinsurance tax may be waived",
+    "slug": "georgia",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Germany",
@@ -288,7 +395,12 @@
       "Life": "EUR 3.7 million",
       "Captive Reinsurance": "EUR 1.2 million"
     },
-    "tax_notes": "No specific tax exemptions reported"
+    "tax_notes": "No specific tax exemptions reported",
+    "slug": "germany",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Gibraltar",
@@ -298,7 +410,12 @@
     "min_capital": {
       "General": "More onerous than offshore; varies by structure"
     },
-    "tax_notes": "10% across the board tax rate"
+    "tax_notes": "10% across the board tax rate",
+    "slug": "gibraltar",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Guam",
@@ -310,7 +427,12 @@
       "Group": "$100,000 Cap / $150,000 Surplus",
       "Protected Cell": "$150,000 per cell (max $750k)"
     },
-    "tax_notes": "100% tax rebates for commercial and captive companies"
+    "tax_notes": "100% tax rebates for commercial and captive companies",
+    "slug": "guam",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Guernsey",
@@ -320,7 +442,12 @@
     "min_capital": {
       "Standard": "Risk-based; 90% confidence level requirement"
     },
-    "tax_notes": "Not subject to Solvency II"
+    "tax_notes": "Not subject to Solvency II",
+    "slug": "guernsey",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Hawaii",
@@ -332,7 +459,12 @@
       "Class 2": "$250,000",
       "Class 3 / Class 4": "$500,000"
     },
-    "tax_notes": "Max premium tax $200,000; tiered rates"
+    "tax_notes": "Max premium tax $200,000; tiered rates",
+    "slug": "hawaii",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Hong Kong",
@@ -342,7 +474,12 @@
     "min_capital": {
       "Minimum Paid-up": "HKD 2 million (~$260,000)"
     },
-    "tax_notes": "16.5% Corporate tax; 50% concession available"
+    "tax_notes": "16.5% Corporate tax; 50% concession available",
+    "slug": "hong-kong",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Illinois",
@@ -354,7 +491,12 @@
       "Industrial Insured": "$500,000",
       "Association": "$750,000"
     },
-    "tax_notes": "$2,000 filing fee (lowered from $7,000)"
+    "tax_notes": "$2,000 filing fee (lowered from $7,000)",
+    "slug": "illinois",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Ireland",
@@ -364,7 +506,12 @@
     "min_capital": {
       "Requirement": "Adheres to EU Solvency II framework"
     },
-    "tax_notes": "Transparent tax regime; Freedom of Service (FoS) access"
+    "tax_notes": "Transparent tax regime; Freedom of Service (FoS) access",
+    "slug": "ireland",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Isle of Man",
@@ -376,7 +523,12 @@
       "Reinsurance Company": "GBP 100,000",
       "General Insurer": "GBP 150,000"
     },
-    "tax_notes": "GBP 6,694 annual standalone charge"
+    "tax_notes": "GBP 6,694 annual standalone charge",
+    "slug": "isle-of-man",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Jersey",
@@ -386,7 +538,12 @@
     "min_capital": {
       "Minimum Requirement": "GBP 100,000 (JFSC discretionary)"
     },
-    "tax_notes": "Solvency margin at 17.5% of net premium for general business"
+    "tax_notes": "Solvency margin at 17.5% of net premium for general business",
+    "slug": "jersey",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Kansas",
@@ -398,7 +555,12 @@
       "Association": "$500,000",
       "Special Purpose": "$5,000,000"
     },
-    "tax_notes": "Tax paid on all premiums received on risks in the state"
+    "tax_notes": "Tax paid on all premiums received on risks in the state",
+    "slug": "kansas",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Kazakhstan",
@@ -410,7 +572,12 @@
       "Class 2": "$200,000",
       "Class 3": "$300,000"
     },
-    "tax_notes": "Friendly tax regime and operational incentives"
+    "tax_notes": "Friendly tax regime and operational incentives",
+    "slug": "kazakhstan",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Kentucky",
@@ -421,7 +588,12 @@
       "Pure / Special Purpose": "$250,000",
       "Most Others": "$500,000"
     },
-    "tax_notes": "$5,000 minimum annual premium tax"
+    "tax_notes": "$5,000 minimum annual premium tax",
+    "slug": "kentucky",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Labuan",
@@ -431,7 +603,12 @@
     "min_capital": {
       "Requirement": "Risk-commensurate working funds in a Labuan bank"
     },
-    "tax_notes": "Fiscal neutrality and certainty"
+    "tax_notes": "Fiscal neutrality and certainty",
+    "slug": "labuan",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Liechtenstein",
@@ -443,7 +620,12 @@
       "Direct Writing (Non-life)": "EUR 2.5 million",
       "Direct Writing (incl. Liability)": "EUR 3.7 million"
     },
-    "tax_notes": "12.5% flat tax on income; CHF 30,000 license fee"
+    "tax_notes": "12.5% flat tax on income; CHF 30,000 license fee",
+    "slug": "liechtenstein",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Luxembourg",
@@ -454,7 +636,12 @@
       "Captive Reinsurance": "EUR 1.2 million",
       "Commercial Reinsurance": "EUR 3.6 million"
     },
-    "tax_notes": "Secure legal and tax framework; infrastructure-rich"
+    "tax_notes": "Secure legal and tax framework; infrastructure-rich",
+    "slug": "luxembourg",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Malta",
@@ -466,7 +653,12 @@
       "Direct Insurer": "EUR 2.5 - 3.7 million",
       "Individual Protected Cells": "No minimum"
     },
-    "tax_notes": "Direct access to UK and EU markets"
+    "tax_notes": "Direct access to UK and EU markets",
+    "slug": "malta",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Mauritius",
@@ -478,7 +670,12 @@
       "Class 1": "MUR 5 million",
       "Classes 2 and 3": "MUR 10 million"
     },
-    "tax_notes": "Long-standing bilateral relations with Africa"
+    "tax_notes": "Long-standing bilateral relations with Africa",
+    "slug": "mauritius",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Michigan",
@@ -490,7 +687,12 @@
       "Sponsored / Association (Mutual)": "$500,000 - $750,000",
       "Special Purpose Financial": "$250,000"
     },
-    "tax_notes": "No tax rate; premium-volume based renewal fee"
+    "tax_notes": "No tax rate; premium-volume based renewal fee",
+    "slug": "michigan",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Missouri",
@@ -501,7 +703,12 @@
       "Pure / Special Purpose Life": "$250,000",
       "Association / Sponsored": "$500,000"
     },
-    "tax_notes": "Direct tax rates tiered (0.38% down to 0.072%)"
+    "tax_notes": "Direct tax rates tiered (0.38% down to 0.072%)",
+    "slug": "missouri",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Montana",
@@ -513,7 +720,12 @@
       "Association": "$500,000",
       "Special Purpose": "Discretionary amount"
     },
-    "tax_notes": "$5,000 minimum; $100,000 maximum tax"
+    "tax_notes": "$5,000 minimum; $100,000 maximum tax",
+    "slug": "montana",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Netherlands",
@@ -523,7 +735,12 @@
     "min_capital": {
       "Requirement": "Risk-based; supervised by DNB"
     },
-    "tax_notes": "Robust supervision framework"
+    "tax_notes": "Robust supervision framework",
+    "slug": "netherlands",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Nevada",
@@ -535,7 +752,12 @@
       "Association / Sponsored": "$500,000",
       "Agency": "$600,000"
     },
-    "tax_notes": "$175,000 maximum tax; first-year credit up to $5,000"
+    "tax_notes": "$175,000 maximum tax; first-year credit up to $5,000",
+    "slug": "nevada",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Nevis",
@@ -547,7 +769,12 @@
       "Multiple Owners (2-4)": "$20,000",
       "Multiple Owners (5+)": "$50,000"
     },
-    "tax_notes": "No tax paid on premiums, income, or assets"
+    "tax_notes": "No tax paid on premiums, income, or assets",
+    "slug": "nevis",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "New Jersey",
@@ -559,7 +786,12 @@
       "Industrial / Sponsored": "$500,000",
       "Association": "$750,000"
     },
-    "tax_notes": "$200,000 maximum annual tax"
+    "tax_notes": "$200,000 maximum annual tax",
+    "slug": "new-jersey",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "New Zealand",
@@ -569,7 +801,12 @@
     "min_capital": {
       "Requirement": "Must demonstrate sufficient financial strength"
     },
-    "tax_notes": "Captives with no NZ business may fall outside IPSA scope"
+    "tax_notes": "Captives with no NZ business may fall outside IPSA scope",
+    "slug": "new-zealand",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "North Carolina",
@@ -581,7 +818,12 @@
       "Association / Industrial": "$500,000",
       "RRG": "$1,000,000"
     },
-    "tax_notes": "$100,000 maximum tax ($200,000 for cells with >10 cells)"
+    "tax_notes": "$100,000 maximum tax ($200,000 for cells with >10 cells)",
+    "slug": "north-carolina",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Oklahoma",
@@ -594,7 +836,12 @@
       "Sponsored / Industrial": "$500,000",
       "RRG": "$1,000,000"
     },
-    "tax_notes": "0.2% direct / 0.1% assumed rates; $100,000 cap"
+    "tax_notes": "0.2% direct / 0.1% assumed rates; $100,000 cap",
+    "slug": "oklahoma",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Oregon",
@@ -606,7 +853,12 @@
       "Association": "$750,000",
       "Reinsurer": "$300,000,000"
     },
-    "tax_notes": "No premium tax; $5,000 annual renewal fee"
+    "tax_notes": "No premium tax; $5,000 annual renewal fee",
+    "slug": "oregon",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Panama",
@@ -617,7 +869,12 @@
       "General Risks": "$150,000",
       "Long-term Risks": "$250,000"
     },
-    "tax_notes": "$2,000 annual service fee"
+    "tax_notes": "$2,000 annual service fee",
+    "slug": "panama",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Puerto Rico",
@@ -628,7 +885,12 @@
       "Pure": "$500,000 (combined capital/surplus)",
       "Association": "$750,000 (surplus only)"
     },
-    "tax_notes": "Preferred tax environment; Class-based application fees"
+    "tax_notes": "Preferred tax environment; Class-based application fees",
+    "slug": "puerto-rico",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Singapore",
@@ -638,7 +900,12 @@
     "min_capital": {
       "Ordinary Share Capital": "SGD 400,000 (~$285,000)"
     },
-    "tax_notes": "17% corporate rate with 10% concessionary rate for qualifying activity"
+    "tax_notes": "17% corporate rate with 10% concessionary rate for qualifying activity",
+    "slug": "singapore",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "South Carolina",
@@ -650,7 +917,12 @@
       "RRG": "$500,000",
       "Association": "$750,000"
     },
-    "tax_notes": "Tiered direct rates (0.4% down to set $100k blocks)"
+    "tax_notes": "Tiered direct rates (0.4% down to set $100k blocks)",
+    "slug": "south-carolina",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "South Dakota",
@@ -661,7 +933,12 @@
       "Trust Captives": "$100,000",
       "All Others": "$250,000"
     },
-    "tax_notes": "No premium tax; supervision fee capped at $50,000"
+    "tax_notes": "No premium tax; supervision fee capped at $50,000",
+    "slug": "south-dakota",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "St Lucia",
@@ -671,7 +948,12 @@
     "min_capital": {
       "Requirement": "$50,000 - $100,000 (FSRA prescribed)"
     },
-    "tax_notes": "No tax unless 1% election is made; special confidentiality provisions"
+    "tax_notes": "No tax unless 1% election is made; special confidentiality provisions",
+    "slug": "st-lucia",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Switzerland",
@@ -681,7 +963,12 @@
     "min_capital": {
       "Requirement": "FINMA prescribed; takes less than one year to comply"
     },
-    "tax_notes": "OECD compliant tax levels; many cantons have lowered corporate tax"
+    "tax_notes": "OECD compliant tax levels; many cantons have lowered corporate tax",
+    "slug": "switzerland",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Tennessee",
@@ -694,7 +981,12 @@
       "RRG": "$1,000,000",
       "Association / Industrial": "$500,000"
     },
-    "tax_notes": "$5,000 minimum tax; tiered rates with $100,000 max"
+    "tax_notes": "$5,000 minimum tax; tiered rates with $100,000 max",
+    "slug": "tennessee",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Texas",
@@ -704,7 +996,12 @@
     "min_capital": {
       "Requirement": "$250,000 (combined capital/surplus)"
     },
-    "tax_notes": "0.5% premium tax; $7,500 min / $200,000 max"
+    "tax_notes": "0.5% premium tax; $7,500 min / $200,000 max",
+    "slug": "texas",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Turks and Caicos Islands",
@@ -714,7 +1011,12 @@
     "min_capital": {
       "Requirement": "Varies by amount of capitalization and application queries"
     },
-    "tax_notes": "No local sales, income, or corporation taxes"
+    "tax_notes": "No local sales, income, or corporation taxes",
+    "slug": "turks-and-caicos-islands",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "US Virgin Islands",
@@ -724,7 +1026,12 @@
     "min_capital": {
       "Requirement": "Industry-lowest capital/surplus minimums"
     },
-    "tax_notes": "5% of qualified manager net revenues for registration/annual fees"
+    "tax_notes": "5% of qualified manager net revenues for registration/annual fees",
+    "slug": "us-virgin-islands",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Utah",
@@ -737,7 +1044,12 @@
       "Industrial Insured": "$700,000",
       "Sponsor": "$500,000"
     },
-    "tax_notes": "No premium or state tax; flat annual fee of $6,375"
+    "tax_notes": "No premium or state tax; flat annual fee of $6,375",
+    "slug": "utah",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Vanuatu",
@@ -748,7 +1060,12 @@
       "General Classes": "$100,000",
       "Life and Long Term": "$200,000"
     },
-    "tax_notes": "$250 application fee; $2,000 annual license fee"
+    "tax_notes": "$250 application fee; $2,000 annual license fee",
+    "slug": "vanuatu",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Vermont",
@@ -763,7 +1080,10 @@
     },
     "tax_notes": "Largest US captive domicile; mature tax structure",
     "contact_name": "Christine Brown, Deputy Commissioner, Captive Insurance Division",
-    "contact_email": "christine.brown@vermont.gov"
+    "contact_email": "christine.brown@vermont.gov",
+    "slug": "vermont",
+    "last_verified": null,
+    "source_urls": []
   },
   {
     "name": "Virginia",
@@ -774,6 +1094,11 @@
       "Stock Company": "$1M Capital / $3M Surplus",
       "Non-Stock Company": "$4M Surplus"
     },
-    "tax_notes": "2.25% premium tax rate on gross written premiums"
+    "tax_notes": "2.25% premium tax rate on gross written premiums",
+    "slug": "virginia",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
   }
 ]
