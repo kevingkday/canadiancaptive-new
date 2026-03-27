@@ -1,0 +1,755 @@
+[
+  {
+    "name": "Abu Dhabi",
+    "summary": "Operating as the Abu Dhabi Global Market (ADGM), this jurisdiction uses the direct application of English common law and provides a flexible, risk-based captive framework. It offers a dedicated rulebook and a streamlined application process with four distinct classes of captive insurers to meet varied business needs. A major benefit is the 0% tax environment guaranteed until 2065, along with the ability to outsource all management functions to ADGM-authorized managers.",
+    "jurisdiction": "Offshore (UAE)",
+    "legislation": "ADGM Captive Insurance Rulebook",
+    "min_capital": {
+      "Class 1 (Pure)": "$150,000",
+      "Class 2": "$250,000",
+      "Class 3 (Group/Association)": "$500,000",
+      "Class 4": "$1,000,000"
+    },
+    "tax_notes": "0% tax until 2065; 5% VAT may apply"
+  },
+  {
+    "name": "Alabama",
+    "summary": "Alabama positions itself at the forefront of the industry by offering innovative features like a 60-day provisional license and the ability to form as any entity allowed under law, including Series LLCs. Legislation enacted in 2006 was significantly updated in 2016 to modernize the Alabama Captive Act and enhance competitiveness. The state is active in advocacy through the Alabama Captive Insurance Association and offers prorated premium taxes in the first year.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Alabama Captive Act (HB 270 update in 2016)",
+    "min_capital": {
+      "Pure / Protected Cell": "$250,000",
+      "RRG / Industrial Insured": "$500,000",
+      "Reciprocals": "$1,000,000"
+    },
+    "tax_notes": "$100,000 maximum cap; no tax on dormant captives"
+  },
+  {
+    "name": "Anguilla",
+    "summary": "Anguilla's Insurance Act provides a comprehensive framework for domestic, offshore, and captive insurance, notably including a specific 2018 provision for producer-affiliated reinsurance companies. The domicile offers five sub-categories of Class B licenses, ranging from unrestricted foreign business to single-owner captives. Unless maintaining a permanent local staff, insurers are required to appoint a licensed insurance manager.",
+    "jurisdiction": "Offshore",
+    "legislation": "Anguilla Insurance Act",
+    "min_capital": {
+      "Property and Casualty": "$100,000",
+      "Life and Health": "$200,000"
+    },
+    "tax_notes": "Tax-neutral structures for Class B insurers"
+  },
+  {
+    "name": "Arizona",
+    "summary": "Established in 2002, Arizona is a mature and proven domicile supported by a stable regulatory team and a well-established network of local service providers. The state is highly competitive due to the absence of insurance premium taxes and state/local income taxes for most licensed captives. It provides an electronic filing portal and a cost-effective application process, licensing varied structures including agency and branch captives.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Arizona Revised Statutes",
+    "min_capital": {
+      "Pure": "$250,000",
+      "Association / Agency / Cell": "$500,000",
+      "RRG": "$500,000"
+    },
+    "tax_notes": "No premium or state income taxes; flat annual license fee"
+  },
+  {
+    "name": "Arkansas",
+    "summary": "Arkansas aggressively recruits captives by refining its laws, including major changes in 2017 and 2019 that reduced capital requirements and welcomed RRGs. It is recognized as one of the most cost-effective domiciles, featuring low application and license fees and a $100,000 tax liability cap. The Arkansas Insurance Department offers no-cost preliminary analyses for companies considering captive formation.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Arkansas Captive Laws (refined 2017-2019)",
+    "min_capital": {
+      "Industrial Insured": "$200k Cap / $300k Surplus",
+      "Sponsored": "$250k Cap / $250k Surplus",
+      "Producer Reinsurance": "$300k Cap / $300k Surplus",
+      "Association": "$400k Cap / $350k Surplus"
+    },
+    "tax_notes": "$100,000 maximum annual tax liability"
+  },
+  {
+    "name": "Aruba",
+    "summary": "Aruba offers a safe and stable environment for financial services with an international legal framework overseen by the Central Bank of Aruba. Captives are defined as businesses insuring risks originating almost exclusively from shareholders, affiliates, or joint venture participants. Operations must maintain an office in Aruba for financial administration and have at least one managing director residing on the island.",
+    "jurisdiction": "Offshore (Caribbean)",
+    "legislation": "Central Bank of Aruba regulations",
+    "min_capital": {
+      "General": "Subject to Central Bank review and actuarial report"
+    },
+    "tax_notes": "Requires annual audited financial statements"
+  },
+  {
+    "name": "The Bahamas",
+    "summary": "The Bahamas is a competitive international financial center that promotes cost-effective growth through the use of segregated account (cell) captives. The External Insurance Act of 2009 classifies all captives as 'restricted' external insurers, while the 2017 Commercial Enterprises Act encourages a domestic presence for specific industries. Licensing involves a robust process, including a pre-application meeting and a 30-to-60-day window to meet approval conditions.",
+    "jurisdiction": "Offshore",
+    "legislation": "External Insurance Act 2009",
+    "min_capital": {
+      "Share Capital": "$100,000 (additional regulatory capital may be required)"
+    },
+    "tax_notes": "$2,500 annual renewal fee for standalone captives"
+  },
+  {
+    "name": "Bahrain",
+    "summary": "Bahrain serves as a regional base for international insurers, with a sector regulated by the Central Bank of Bahrain (CBB) as a single regulator since 2002. The CBB differentiates between captive and commercial insurers, offering lower capital and solvency requirements for captives provided they do not include third-party liability risks. The domicile is supported by a large pool of brokers, actuaries, and insurance managers.",
+    "jurisdiction": "Offshore",
+    "legislation": "CBB Regulatory Framework",
+    "min_capital": {
+      "Captive": "Risk-based; lower than traditional insurers unless third-party liability is involved"
+    },
+    "tax_notes": "Competitive regulatory environment"
+  },
+  {
+    "name": "Barbados",
+    "summary": "Barbados is a top-tier domicile known for its political stability and extensive bilateral double taxation treaty network with countries like Canada and the US. In 2019, it eliminated its ring-fenced regime, replacing the Exempt Insurance Act with a unified Insurance Act classified into three distinct license classes. Class 1 captives are restricted to related party business, while Class 2 can underwrite third-party risks with a 2% tax rate.",
+    "jurisdiction": "Offshore",
+    "legislation": "Insurance Act, Cap. 310 (effective 2019)",
+    "min_capital": {
+      "Insurance Companies": "$125,000"
+    },
+    "tax_notes": "0% for Class 1; 2% for Class 2 and Class 3 entities"
+  },
+  {
+    "name": "Bermuda",
+    "summary": "Bermuda is a global authority in the captive market, reaching full Solvency II equivalence in 2016 following oversight by the Bermuda Monetary Authority (BMA). Captives benefit from a robust market that provides open-market underwriting capacity not easily found elsewhere. As a reciprocal jurisdiction under the NAIC, Bermuda-based insurers can operate in the US without additional capital requirements.",
+    "jurisdiction": "Offshore",
+    "legislation": "BMA Risk-Based Framework",
+    "min_capital": {
+      "Class 1 / Class A": "$120,000 floor",
+      "Class 2 / Class B": "$250,000 floor",
+      "Class 3": "$1,000,000 floor"
+    },
+    "tax_notes": "Tax-competitive environment"
+  },
+  {
+    "name": "British Columbia",
+    "summary": "British Columbia is the only Canadian province with dedicated captive legislation, the Insurance (Captive Company) Act. It permits pure, association, and sophisticated insured captives, the latter requiring aggregate annual premiums of at least 500,000 CAD. While subject to federal and provincial income taxes, captives can write nearly all insurance classes with few restrictions.",
+    "jurisdiction": "Onshore (Canada)",
+    "legislation": "Insurance (Captive Company) Act (ICCA)",
+    "min_capital": {
+      "Minimum Capital and Reserve": "300,000 CAD"
+    },
+    "tax_notes": "Premium taxes set by the province where risk is located"
+  },
+  {
+    "name": "British Virgin Islands",
+    "summary": "The BVI offers a seamless approach to captive formation, leveraging a long tenure in corporate domiciliation and a deep cadre of professional expertise. It licenses various captive categories, including Category E for pure captives and segregated portfolio companies that allow independent underwriting for owners. There is no corporate income tax in the BVI, and capital requirements vary based on the insurance line.",
+    "jurisdiction": "Offshore",
+    "legislation": "BVI Financial Services Commission framework",
+    "min_capital": {
+      "P&C Business": "$100,000",
+      "Life and Health": "$200,000"
+    },
+    "tax_notes": "No corporate income tax"
+  },
+  {
+    "name": "Cayman Islands",
+    "summary": "The Cayman Islands is the world's second-largest captive domicile and the leader in healthcare-related medical malpractice captives. Governed by the Insurance Law of 2010, it offers a flexible legislative environment that aligns with global industry standards. Captives are primarily categorized under Class B, which is further divided into four subgroups based on the origin of net premiums.",
+    "jurisdiction": "Offshore",
+    "legislation": "Insurance Law 2010",
+    "min_capital": {
+      "Class B(i)": "$100,000",
+      "Class B(ii)": "$150,000",
+      "Class B(iii)": "$200,000"
+    },
+    "tax_notes": "91% of captive business originates from the US"
+  },
+  {
+    "name": "China",
+    "summary": "China's captive sector is primarily focused on pure captives owned by large state-owned or private enterprises with assets exceeding RMB 100 billion. The CBIRC oversees the industry, utilizing the China Risk Oriented Solvency System (C-ROSS) without exemption for captives. There are no specific tax exemptions for captives; they are subject to standard corporate tax rates of 25% and 6% VAT.",
+    "jurisdiction": "Onshore (China)",
+    "legislation": "CBIRC Circulars (2013 and 2015)",
+    "min_capital": {
+      "Minimum Requirement": "RMB 200 million (~$29M)"
+    },
+    "tax_notes": "25% Corporate tax; 6% VAT"
+  },
+  {
+    "name": "Connecticut",
+    "summary": "Connecticut, the 'insurance capital of the world,' has modernized its captive laws and application process to offer quick decisions and a risk-based regulatory approach. The state is unique for its concentration of insurtech, commercial insurers, and experienced regulators. It offers first-year premium tax credits of $7,500 and avoids the use of outside consultants to keep formation costs low.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Connecticut Captive Law",
+    "min_capital": {
+      "Pure / Branch": "$250,000",
+      "RRG": "$1,000,000",
+      "Others": "$500,000"
+    },
+    "tax_notes": "$7,500 minimum; $200,000 maximum tax"
+  },
+  {
+    "name": "Cook Islands",
+    "summary": "The Cook Islands enacted its Captive Insurance Act in 2013 to regulate business conducted both inside and outside its borders by international companies. As of January 2022, companies are subject to a 20% tax on worldwide income to comply with EU standards and avoid non-cooperative listing. Domicile requirements include audited annual accounts filed with the Financial Supervisory Commission.",
+    "jurisdiction": "Offshore",
+    "legislation": "Captive Insurance Act 2013",
+    "min_capital": {
+      "Minimum Requirement": "NZD 100,000 (~$71,500)"
+    },
+    "tax_notes": "20% worldwide income tax (as of 2022)"
+  },
+  {
+    "name": "Delaware",
+    "summary": "Delaware is a top-tier global domicile known for a regulatory bureau with exceptionally high levels of professional expertise and qualifications. It was the first US state to offer same-day conditional licensing, allowing captives to begin operations while their permanent application is reviewed. The state caters to a wide variety of structures, including series captives and risk retention groups.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Delaware Department of Insurance framework",
+    "min_capital": {
+      "Pure / Agency": "$250,000",
+      "RRG": "$1,000,000",
+      "Association": "$750,000"
+    },
+    "tax_notes": "$5,000 minimum tax ($3,500 for series captives)"
+  },
+  {
+    "name": "District of Columbia",
+    "summary": "The District of Columbia features a progressive insurance code and a knowledgeable staff specializing in captives and risk retention groups. It offers competitive costs for financial examinations and does not require a local director, though at least one annual board meeting must be facilitated from the district. Examination cycles occur every five years but can be extended upon request.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "DC Insurance and Corporations Code",
+    "min_capital": {
+      "Pure": "$250,000",
+      "Others": "$400,000",
+      "Cells": "No minimum (Commissioner discretionary)"
+    },
+    "tax_notes": "Favorable examination costs compared to other domiciles"
+  },
+  {
+    "name": "Dubai",
+    "summary": "The Dubai International Financial Centre (DIFC) is a leading hub for the MEASA region, connecting emerging markets with a proven judicial system and an English common law framework. Regulated by the independent DFSA, the domicile offers 100% digital onboarding and a 0% tax rate on corporate income guaranteed until 2054. It allows for pure, third-party, and association captives with case-by-case flexibility on capital structures.",
+    "jurisdiction": "Offshore (UAE)",
+    "legislation": "DFSA Rules",
+    "min_capital": {
+      "Class 1 (Group Risks)": "$150,000",
+      "Class 2": "$500,000",
+      "Class 3 (Association)": "$1,000,000"
+    },
+    "tax_notes": "0% tax until 2054; waived commercial license fees"
+  },
+  {
+    "name": "Federated States of Micronesia",
+    "summary": "Micronesia enacted its captive law in 2006 specifically to provide Japanese corporations with a conveniently located domicile under a responsive regulatory environment. Captives are required to file audited financial statements that can be prepared under US or Japanese GAAP. Beyond a low 0.05% premium tax, captives also file a simple annual income tax return computed at 21% of net income.",
+    "jurisdiction": "Offshore",
+    "legislation": "2006 Captive Law",
+    "min_capital": {
+      "Single Parent / Group": "$100,000 (subject to Commissioner increase)"
+    },
+    "tax_notes": "0.05% premium tax; 21% net income tax"
+  },
+  {
+    "name": "Florida",
+    "summary": "Florida's captive provisions were augmented in 2012 to further specify criteria for formation, capital, and licensure. The state's unique selling point is its relatively low capital requirements across its four main captive types: pure, industrial insured, special purpose, and reinsurance. Interested parties are directed to Chapter 628 of the Florida statutes for detailed variation in requirement by captive type.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Chapter 628, Part V, Florida Statutes",
+    "min_capital": {
+      "Requirement": "Low relative requirements (varies by type)"
+    },
+    "tax_notes": "Requires annual reporting compliance"
+  },
+  {
+    "name": "France",
+    "summary": "France is a growing challenger in the European market, applying Solvency II regulations to ensure high quality in shareholders and solvency. Domiciling in France allows direct captives to operate across Europe under the Freedom of Service principle. The regulator, ACPR, maintains a dedicated team for captive supervision and emphasizes solid governance structured around '4 eyes' principles.",
+    "jurisdiction": "Onshore (EU)",
+    "legislation": "EU Solvency II framework",
+    "min_capital": {
+      "Insurance (Non-life)": "EUR 2.5 million",
+      "Insurance (Life)": "EUR 3.6 million",
+      "Reinsurance": "EUR 1.2 million"
+    },
+    "tax_notes": "Freedom of Service access across the EU"
+  },
+  {
+    "name": "Georgia",
+    "summary": "The Georgia Insurance Department provides a healthy regulatory environment for captives, supported by 2018 legislation that improved formation efficiency. Georgia's premium tax structure is tiered and provides for captives under common ownership to be taxed as a single entity. The state emphasizes superior customer service to help its 50+ active captives succeed.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "2018 Captive Legislation",
+    "min_capital": {
+      "Pure / Agency": "$250,000",
+      "RRG / Industrial Insured": "$500,000"
+    },
+    "tax_notes": "Max tax of $100,000 per year; reinsurance tax may be waived"
+  },
+  {
+    "name": "Germany",
+    "summary": "While not a typical domicile, Germany attracts captives through compliance requirements and the efficiency of sharing staff with parent companies and in-house brokers. Operations are governed by Solvency II and Section 122 VAG, with BaFin withdrawing authorization if eligible funds fall below strict minimums. Minimum capital requirements are calculated based on EU Delegated Regulation 2015/35.",
+    "jurisdiction": "Onshore (EU)",
+    "legislation": "Solvency II / Section 122 VAG",
+    "min_capital": {
+      "Non-Life": "EUR 2.5 million (higher for liability)",
+      "Life": "EUR 3.7 million",
+      "Captive Reinsurance": "EUR 1.2 million"
+    },
+    "tax_notes": "No specific tax exemptions reported"
+  },
+  {
+    "name": "Gibraltar",
+    "summary": "As an onshore domicile for over 50 years, Gibraltar offers captive owners direct access to the UK market under flexible EU-based laws. It features a low flat tax rate of 10% which has been in effect since 2010. While capital requirements can be more onerous than offshore locations, the domicile permits varied structures including protected cell companies and managing general agents.",
+    "jurisdiction": "Onshore",
+    "legislation": "Gibraltar Insurance Laws",
+    "min_capital": {
+      "General": "More onerous than offshore; varies by structure"
+    },
+    "tax_notes": "10% across the board tax rate"
+  },
+  {
+    "name": "Guam",
+    "summary": "Guam offers a unique geographical advantage for US-linked business in the Pacific and features 100% tax abatement and rebates for corporate and gross receipts taxes. Legislation enacted in 1996 and subsequent amendments provide an attractive environment for risk management headquarters. Capital and surplus can be held in cash or irrevocable letters of credit approved by the commissioner.",
+    "jurisdiction": "Offshore (USA Territory)",
+    "legislation": "Public Law 24-266",
+    "min_capital": {
+      "Pure": "$50,000 Cap / $100,000 Surplus",
+      "Group": "$100,000 Cap / $150,000 Surplus",
+      "Protected Cell": "$150,000 per cell (max $750k)"
+    },
+    "tax_notes": "100% tax rebates for commercial and captive companies"
+  },
+  {
+    "name": "Guernsey",
+    "summary": "Guernsey is the largest captive domicile in Europe and a global pioneer that introduced the protected cell company (PCC) concept. Being outside the EU, it maintains a highly effective regulatory environment that is IAIS compliant but not subject to Solvency II. It recently introduced a pre-authorization pilot scheme for insurance cells, allowing creation within 48 hours for urgent business needs.",
+    "jurisdiction": "Offshore",
+    "legislation": "Insurance Business (Bailiwick of Guernsey) Law 2002",
+    "min_capital": {
+      "Standard": "Risk-based; 90% confidence level requirement"
+    },
+    "tax_notes": "Not subject to Solvency II"
+  },
+  {
+    "name": "Hawaii",
+    "summary": "With over 30 years of experience, Hawaii is a premier Pacific domicile recognized for its partnership-based approach with captive owners. The insurance commissioner guides capital requirements based on individual programs across five license classes. Taxes are limited to a $200,000 maximum, and there is no taxation on reinsurance premiums assumed by a captive.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Hawaii Captive Statutes",
+    "min_capital": {
+      "Class 1": "$100,000",
+      "Class 2": "$250,000",
+      "Class 3 / Class 4": "$500,000"
+    },
+    "tax_notes": "Max premium tax $200,000; tiered rates"
+  },
+  {
+    "name": "Hong Kong",
+    "summary": "Hong Kong is a leading Asian financial hub that encourages captive establishment through simple tax regimes and targeted concessions for marine and specialty insurance. Since 2013, it has provided a 50% reduction in corporate tax for offshore business, later extended to onshore risks. The Insurance Authority's strategic vision is to build a regional hub through a bespoke regime for insurance-linked securities (ILS).",
+    "jurisdiction": "Onshore (China SAR)",
+    "legislation": "Insurance Act (Hong Kong)",
+    "min_capital": {
+      "Minimum Paid-up": "HKD 2 million (~$260,000)"
+    },
+    "tax_notes": "16.5% Corporate tax; 50% concession available"
+  },
+  {
+    "name": "Illinois",
+    "summary": "Illinois modernized its Insurance Code in 2018 to lower capital and surplus requirements and filing fees, making the state a more viable captive domicile. The state now allows captives to make loans to affiliates with prior approval and permits captive reinsurance pools. Despite having one of the highest GDPs in the US, Illinois has only recently become an active competitor in the captive space.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Illinois Insurance Code (2018 Amendment)",
+    "min_capital": {
+      "Pure": "$250,000",
+      "Industrial Insured": "$500,000",
+      "Association": "$750,000"
+    },
+    "tax_notes": "$2,000 filing fee (lowered from $7,000)"
+  },
+  {
+    "name": "Ireland",
+    "summary": "Ireland is a global re/insurance center that provides a stable operating environment with direct access to all EEA countries through EU passporting. The Central Bank of Ireland (CBI) applies Solvency II proportionately through its PRISM system, which allows captives to have fewer directors and less frequent meetings. The state is also known for managing non-traditional risks like employee benefits.",
+    "jurisdiction": "Onshore (EU)",
+    "legislation": "Solvency II / PRISM Framework",
+    "min_capital": {
+      "Requirement": "Adheres to EU Solvency II framework"
+    },
+    "tax_notes": "Transparent tax regime; Freedom of Service (FoS) access"
+  },
+  {
+    "name": "Isle of Man",
+    "summary": "The Isle of Man offers proportional capital requirements and a pragmatic regulatory environment with a strong Moody's Aa3 rating. It is distinguished by bespoke legislation for catastrophe bonds and insurance-linked securities. A key flexibility is the ability for captives to provide a loan back to their parent company.",
+    "jurisdiction": "Offshore",
+    "legislation": "IOMFSA Risk-Based Methodology",
+    "min_capital": {
+      "Captive Insurer": "GBP 50,000",
+      "Reinsurance Company": "GBP 100,000",
+      "General Insurer": "GBP 150,000"
+    },
+    "tax_notes": "GBP 6,694 annual standalone charge"
+  },
+  {
+    "name": "Jersey",
+    "summary": "Jersey has a growing reputation as an alternative location that follows international IAIS standards rather than Solvency II. The market has grown by over 30% in recent years due to an 'open for business' approach and the capability to handle both long and short-term risks. The JFSC maintains the discretion to amend capital requirements based on business projections.",
+    "jurisdiction": "Offshore",
+    "legislation": "Insurance Business (Jersey) Law 1996",
+    "min_capital": {
+      "Minimum Requirement": "GBP 100,000 (JFSC discretionary)"
+    },
+    "tax_notes": "Solvency margin at 17.5% of net premium for general business"
+  },
+  {
+    "name": "Kansas",
+    "summary": "Kansas law provides for pure, association, branch, and special purpose captives, with specific reporting requirements due by March 1 each year. Association captives can utilize letters of credit from state-chartered banks for capital requirements. The domicile leverages the NAIC Uniform Certificate of Authority for admission documents.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Kansas Captive Insurance Law",
+    "min_capital": {
+      "Pure": "$250,000",
+      "Association": "$500,000",
+      "Special Purpose": "$5,000,000"
+    },
+    "tax_notes": "Tax paid on all premiums received on risks in the state"
+  },
+  {
+    "name": "Kazakhstan",
+    "summary": "The Astana International Financial Centre (AIFC) is a unique hub that offers incentives to attract Kazakhstani capital and assets back from foreign jurisdictions. It provides three captive classes and utilizes a specific formula to calculate the premium risk component of capital. The jurisdiction is noted for its relocation-friendly regime, exemplified by the move of the Kazakhstan Energy Reinsurance Company from Bermuda.",
+    "jurisdiction": "Onshore (AIFC)",
+    "legislation": "AIFC Insurance and Reinsurance Prudential Rules",
+    "min_capital": {
+      "Class 1": "$100,000",
+      "Class 2": "$200,000",
+      "Class 3": "$300,000"
+    },
+    "tax_notes": "Friendly tax regime and operational incentives"
+  },
+  {
+    "name": "Kentucky",
+    "summary": "Kentucky is an established midwestern domicile that has grown to over 80 licensed captives across diverse industries like healthcare, banking, and manufacturing. It features a dedicated staff and graduated premium tax rates that become lower as premium volumes rise. A minimum annual tax of $5,000 is required if regular premium taxes fall below that threshold.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Kentucky Department of Insurance framework",
+    "min_capital": {
+      "Pure / Special Purpose": "$250,000",
+      "Most Others": "$500,000"
+    },
+    "tax_notes": "$5,000 minimum annual premium tax"
+  },
+  {
+    "name": "Labuan",
+    "summary": "Labuan IBFC is Asia's premier international financial hub, uniquely offering shariah-compliant Islamic captives, known as takaful captives. It is a substance-enabling jurisdiction with access to Malaysia's network of over 70 double taxation treaties. Every captive must have an operational office in Labuan or appoint a licensed underwriting manager.",
+    "jurisdiction": "Offshore (Malaysia)",
+    "legislation": "Labuan Islamic Financial Services and Securities Act 2010",
+    "min_capital": {
+      "Requirement": "Risk-commensurate working funds in a Labuan bank"
+    },
+    "tax_notes": "Fiscal neutrality and certainty"
+  },
+  {
+    "name": "Liechtenstein",
+    "summary": "Liechtenstein offers an adept workforce and unique central European access to both the EU and Switzerland markets. Captives are subject to Solvency II and can insure subsidiaries across the European Economic Area and third countries. While it does not tax capital, it applies a flat 12.5% tax rate on taxable income.",
+    "jurisdiction": "Onshore (EEA)",
+    "legislation": "Insurance Supervision Act / Solvency II",
+    "min_capital": {
+      "Reinsurance": "EUR 1.2 million",
+      "Direct Writing (Non-life)": "EUR 2.5 million",
+      "Direct Writing (incl. Liability)": "EUR 3.7 million"
+    },
+    "tax_notes": "12.5% flat tax on income; CHF 30,000 license fee"
+  },
+  {
+    "name": "Luxembourg",
+    "summary": "Luxembourg is the largest captive reinsurance domicile in the EU, attracting global firms with its stable democracy and modern legal framework. It allows captives with low risk diversification to build large technical reserves for high-risk, low-frequency exposures. The minister must authorize a local manager for all reinsurance activities established in the state.",
+    "jurisdiction": "Onshore (EU)",
+    "legislation": "Law of 7 December 2015 (Solvency II)",
+    "min_capital": {
+      "Captive Reinsurance": "EUR 1.2 million",
+      "Commercial Reinsurance": "EUR 3.6 million"
+    },
+    "tax_notes": "Secure legal and tax framework; infrastructure-rich"
+  },
+  {
+    "name": "Malta",
+    "summary": "Malta is the only EU member state with protected cell company (PCC) legislation that extends to brokers and insurance managers beyond traditional insurers. Its PCCs offer unique shared economies of scale and direct access to the EU market, effectively reducing fronting costs. The domicile is Fitch A+ rated and focuses on facilitating blockchain technology and legal certainty for smart contracts.",
+    "jurisdiction": "Onshore (EU)",
+    "legislation": "PCC Legislation (MFSA regulated)",
+    "min_capital": {
+      "Captive Reinsurance": "EUR 1.2 million",
+      "Direct Insurer": "EUR 2.5 - 3.7 million",
+      "Individual Protected Cells": "No minimum"
+    },
+    "tax_notes": "Direct access to UK and EU markets"
+  },
+  {
+    "name": "Mauritius",
+    "summary": "Mauritius is an emerging African domicile that provides stability with no exchange controls and an innovative pool of financial products. New proposed rules distinguish four classes of captive business based on the percentage of gross written premium originating from affiliates. Minimum unimpaired paid-up capital starts at approximately $86,750 for pure captives.",
+    "jurisdiction": "Offshore",
+    "legislation": "Captive Insurance Act 2015",
+    "min_capital": {
+      "Pure": "MUR 3 million (~$86,750)",
+      "Class 1": "MUR 5 million",
+      "Classes 2 and 3": "MUR 10 million"
+    },
+    "tax_notes": "Long-standing bilateral relations with Africa"
+  },
+  {
+    "name": "Michigan",
+    "summary": "Michigan licenses a wide range of captives, including non-profit pure and special purpose financial captives. It maintains a strict resident requirement where two out of three organizers must be state residents, and board meetings must be held in-state. Notably, the state does not have a premium tax rate, using a renewal fee based on premium volume instead.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Michigan DILS framework",
+    "min_capital": {
+      "Pure": "$150,000",
+      "Sponsored / Association (Mutual)": "$500,000 - $750,000",
+      "Special Purpose Financial": "$250,000"
+    },
+    "tax_notes": "No tax rate; premium-volume based renewal fee"
+  },
+  {
+    "name": "Missouri",
+    "summary": "Centrally located with major non-stop flight access, Missouri emphasizes cost-reduction by using expert in-house analysts rather than outside consultants. It licenses varied structures, including special purpose life and sponsored cell captives. Application and licensing fees are deductible, helping to lower the barrier for new formations.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Missouri Department of Insurance framework",
+    "min_capital": {
+      "Pure / Special Purpose Life": "$250,000",
+      "Association / Sponsored": "$500,000"
+    },
+    "tax_notes": "Direct tax rates tiered (0.38% down to 0.072%)"
+  },
+  {
+    "name": "Montana",
+    "summary": "Montana is recognized for having accessible regulators and one of the few regimes that offers special purpose captives under a series limited liability structure. This allows smaller captives to form with capital based on premium writing rather than a fixed minimum. The state legislature is extremely supportive, and captives are subject to mandatory examination at least every five years.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Montana Captive Insurance Statutes",
+    "min_capital": {
+      "Pure": "$250,000",
+      "Association": "$500,000",
+      "Special Purpose": "Discretionary amount"
+    },
+    "tax_notes": "$5,000 minimum; $100,000 maximum tax"
+  },
+  {
+    "name": "Netherlands",
+    "summary": "The Dutch regulator, De Nederlandsche Bank (DNB), offers a robust supervision framework and has a deep understanding of captive-specific characteristics. Popular with Asian and American holding companies, the domicile has a local community of owners that evaluate supervisory topics. It is home to both insurance and reinsurance captives and features an exceptionally well-educated, English-speaking workforce.",
+    "jurisdiction": "Onshore (EU)",
+    "legislation": "DNB Regulatory Framework",
+    "min_capital": {
+      "Requirement": "Risk-based; supervised by DNB"
+    },
+    "tax_notes": "Robust supervision framework"
+  },
+  {
+    "name": "Nevada",
+    "summary": "Nevada is one of the oldest US domiciles and frequently ranks first in new business launches due to its lack of corporate or personal income taxes. In 2019, it added a dormant captive status, allowing inactive companies to retain their certificate with fewer compliance requirements. Examination fees were also recently reduced by 33% to remain competitive.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Nevada Captive Insurance Law (Updated 2019)",
+    "min_capital": {
+      "Pure": "$200,000",
+      "Association / Sponsored": "$500,000",
+      "Agency": "$600,000"
+    },
+    "tax_notes": "$175,000 maximum tax; first-year credit up to $5,000"
+  },
+  {
+    "name": "Nevis",
+    "summary": "Nevis has provided a well-regulated international jurisdiction since 2004, geared toward the long-term viability of captives. It offers a low-cost environment with no tax on premiums, assets, or net income. Captives are formed as corporations but have a 'menu' of legal ownership options including trusts and LLCs to align with parent structures.",
+    "jurisdiction": "Offshore",
+    "legislation": "Nevis FSRC Framework",
+    "min_capital": {
+      "Single Owner": "$10,000",
+      "Multiple Owners (2-4)": "$20,000",
+      "Multiple Owners (5+)": "$50,000"
+    },
+    "tax_notes": "No tax paid on premiums, income, or assets"
+  },
+  {
+    "name": "New Jersey",
+    "summary": "New Jersey is an accessible domicile for Fortune 500 companies, regulated by the DOBI commissioner who actively seeks to modernize the market. The state enacted its legislation in 2011 and requires captives to hold at least one board meeting in the state per year. The commissioner holds discretionary authority to increase capital requirements based on the volume and nature of insurance.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "New Jersey Captive Legislation (2011)",
+    "min_capital": {
+      "Pure": "$250,000",
+      "Industrial / Sponsored": "$500,000",
+      "Association": "$750,000"
+    },
+    "tax_notes": "$200,000 maximum annual tax"
+  },
+  {
+    "name": "New Zealand",
+    "summary": "New Zealand does not have specific captive-only legislation, instead governing all insurance through the IPSA 2010 act. Captives are explicitly exempt from the financial strength rating requirements that apply to traditional insurers. To obtain a license, a captive must demonstrate 'fitness for business' and the capacity to manage its specific risks.",
+    "jurisdiction": "Onshore",
+    "legislation": "Insurance (Prudential Supervision) Act 2010",
+    "min_capital": {
+      "Requirement": "Must demonstrate sufficient financial strength"
+    },
+    "tax_notes": "Captives with no NZ business may fall outside IPSA scope"
+  },
+  {
+    "name": "North Carolina",
+    "summary": "North Carolina has rapidly achieved prominence due to its modern law and an in-house regulatory team focused on accessibility and customer service. It utilizes a secure online filing system to streamline the application process. The commissioner maintains discretion to allow lower capital amounts if a feasibility study proves adequacy.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "North Carolina Captive Insurance Act",
+    "min_capital": {
+      "Pure / Cell / Special Purpose": "$250,000",
+      "Association / Industrial": "$500,000",
+      "RRG": "$1,000,000"
+    },
+    "tax_notes": "$100,000 maximum tax ($200,000 for cells with >10 cells)"
+  },
+  {
+    "name": "Oklahoma",
+    "summary": "Oklahoma is recognized for continuous innovation, offering competitive arrays of investment options and a provisional license for new applicants and redomestications. In 2020, it introduced an incentive for 'Series' captives to maintain only $50,000 in capital if certain risk-segregation criteria are met. Captives are permitted to conduct a broad selection of coverages, including workers' compensation.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Oklahoma Captive Act",
+    "min_capital": {
+      "Pure": "$250,000 ($150k first year)",
+      "Special Purpose": "$250,000",
+      "Sponsored / Industrial": "$500,000",
+      "RRG": "$1,000,000"
+    },
+    "tax_notes": "0.2% direct / 0.1% assumed rates; $100,000 cap"
+  },
+  {
+    "name": "Oregon",
+    "summary": "Oregon describes itself as a business-friendly domicile that collaboratively forms captives for financial success and legal compliance. A notable attribute is that Oregon does not collect any premium tax, charging only a flat initial and annual renewal fee. All captives are examined at least once every three years by the Division of Financial Regulation.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Oregon Captive Law (passed 2012)",
+    "min_capital": {
+      "Pure": "$250,000",
+      "Association": "$750,000",
+      "Reinsurer": "$300,000,000"
+    },
+    "tax_notes": "No premium tax; $5,000 annual renewal fee"
+  },
+  {
+    "name": "Panama",
+    "summary": "Captive insurance in Panama is subject to Law 60 of 1996, which distinguishes between long-term life risks and general risks. In Panama, local risks are generally not insurable; the law focuses on foreign risks managed from a physically identified office in Panama. Obtaining a license is a two-stage process involving legal vehicle registration followed by a superintendent license request.",
+    "jurisdiction": "Offshore",
+    "legislation": "Law 60 of 1996",
+    "min_capital": {
+      "General Risks": "$150,000",
+      "Long-term Risks": "$250,000"
+    },
+    "tax_notes": "$2,000 annual service fee"
+  },
+  {
+    "name": "Puerto Rico",
+    "summary": "Puerto Rico offers a unique 'dual sovereignty' environment, governed by standard US federal oversight while Puerto Rican law takes precedence in corporate and insurance matters. It maintains an International Insurance Center as a one-stop regulatory shop for over 450 active captives. Pure captives utilize a 5:1 premium to surplus ratio, while association captives cap third-party risks at 20%.",
+    "jurisdiction": "Onshore (USA Territory)",
+    "legislation": "Puerto Rico Insurance Code",
+    "min_capital": {
+      "Pure": "$500,000 (combined capital/surplus)",
+      "Association": "$750,000 (surplus only)"
+    },
+    "tax_notes": "Preferred tax environment; Class-based application fees"
+  },
+  {
+    "name": "Singapore",
+    "summary": "After licensing its first captive in 1983, Singapore has grown into the largest Asia Pacific captive domicile and a major reinsurance center. It is governed by the Insurance Act and offers chargeable income tax exemptions of up to SGD 152,500. Capital adequacy is set strictly such that equity and retained earnings must exceed the sum of SGD 400,000 and calculated insurance fund components.",
+    "jurisdiction": "Onshore",
+    "legislation": "Singapore Insurance Act",
+    "min_capital": {
+      "Ordinary Share Capital": "SGD 400,000 (~$285,000)"
+    },
+    "tax_notes": "17% corporate rate with 10% concessionary rate for qualifying activity"
+  },
+  {
+    "name": "South Carolina",
+    "summary": "South Carolina is the only mature domicile in the southeastern US, featuring 22 years of operation and a savvy regulatory environment. It focuses on owner value across structures like risk retention groups and special purpose financial captives. The state is recognized for its business-friendly climate and world-class captive know-how.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "South Carolina Statutes",
+    "min_capital": {
+      "Pure / Sponsored": "$250,000",
+      "RRG": "$500,000",
+      "Association": "$750,000"
+    },
+    "tax_notes": "Tiered direct rates (0.4% down to set $100k blocks)"
+  },
+  {
+    "name": "South Dakota",
+    "summary": "South Dakota is nationally recognized for user-friendly trust laws and a common-sense regulatory environment where owners work directly with decision makers. It does not charge premium taxes, opting instead for a supervision fee that can never exceed $50,000 annually. Captives must maintain their principal place of business and hold at least one board meeting in the state with a physical quorum.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Chapter 58-46, South Dakota Captive Legislation",
+    "min_capital": {
+      "Trust Captives": "$100,000",
+      "All Others": "$250,000"
+    },
+    "tax_notes": "No premium tax; supervision fee capped at $50,000"
+  },
+  {
+    "name": "St Lucia",
+    "summary": "St Lucia requires all insurance applications to be conducted through an international business company (IBC) with a local registered agent and office. The FSRA maintains the discretion to fix solvency margins and guidelines distinguish between Class A, B, and C licenses based on risk type. IBC structures generally enjoy tax-neutral status unless they elect for a 1% tax.",
+    "jurisdiction": "Offshore",
+    "legislation": "International Insurance Act",
+    "min_capital": {
+      "Requirement": "$50,000 - $100,000 (FSRA prescribed)"
+    },
+    "tax_notes": "No tax unless 1% election is made; special confidentiality provisions"
+  },
+  {
+    "name": "Switzerland",
+    "summary": "Switzerland boasts top-tier political and fiscal stability, with major insurance hubs in Zurich and Zug offering a vast pool of experienced staff. Captives benefit from proportional regulation and relief from tied-asset regulations for intra-group activities. The Swiss Solvency Test (SST) is basically parallel to EU requirements, offering simplified models for reinsurance captives.",
+    "jurisdiction": "Onshore",
+    "legislation": "Swiss Financial Market Supervisory Authority (FINMA)",
+    "min_capital": {
+      "Requirement": "FINMA prescribed; takes less than one year to comply"
+    },
+    "tax_notes": "OECD compliant tax levels; many cantons have lowered corporate tax"
+  },
+  {
+    "name": "Tennessee",
+    "summary": "Tennessee was one of the first onshore US domiciles and has grown to rank in the top 20 globally after modernizing its statute in 2011. It is one of the few states that allows series limited liability companies, offering lower administrative burdens for incorporated cells. The state even offers a one-year tax holiday for alien captives redomesticating to Tennessee.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Updated Tennessee Captive Statute",
+    "min_capital": {
+      "Pure": "$250,000",
+      "Protected Cell": "$100,000",
+      "RRG": "$1,000,000",
+      "Association / Industrial": "$500,000"
+    },
+    "tax_notes": "$5,000 minimum tax; tiered rates with $100,000 max"
+  },
+  {
+    "name": "Texas",
+    "summary": "Texas focuses on single-parent captives to help business owners protect the enterprise value they create. While primarily supportive of single-parent structures, the state seeks to create the most broadly constructive statute possible for this category. The Texas Department of Insurance examines actuarial projections and other issues before finalizing any formation decisions.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Texas Department of Insurance (TDI) framework",
+    "min_capital": {
+      "Requirement": "$250,000 (combined capital/surplus)"
+    },
+    "tax_notes": "0.5% premium tax; $7,500 min / $200,000 max"
+  },
+  {
+    "name": "Turks and Caicos Islands",
+    "summary": "As a UK overseas territory, Turks and Caicos uses a British common law legal framework and is tax neutral, with no income or corporate taxes. Incorporation can be achieved within two days, and an insurance license can normally be obtained within 10 business days for well-prepared applications. Both pure captives and producer-owned reinsurance companies (PORCs) are welcomed.",
+    "jurisdiction": "Offshore",
+    "legislation": "FSC Licensing Committee framework",
+    "min_capital": {
+      "Requirement": "Varies by amount of capitalization and application queries"
+    },
+    "tax_notes": "No local sales, income, or corporation taxes"
+  },
+  {
+    "name": "US Virgin Islands",
+    "summary": "The US Virgin Islands is an emerging market positioned to capture small and medium-sized captives by offering the lowest minimum capital and surplus requirements in the industry. Its legislation covers varied structures, including industrial insured and special purpose financial captives. It also features the lowest registration fees, set at 5% of qualified manager net revenues.",
+    "jurisdiction": "Onshore (USA Territory)",
+    "legislation": "Title 22, Chapters 55 and 66, Virgin Islands Code",
+    "min_capital": {
+      "Requirement": "Industry-lowest capital/surplus minimums"
+    },
+    "tax_notes": "5% of qualified manager net revenues for registration/annual fees"
+  },
+  {
+    "name": "Utah",
+    "summary": "Utah is a leading domicile for technological advancement, handling all annual filings and applications via a smooth online portal. A major selling point is that Utah does not impose any state or premium taxes, charging only a flat annual fee. Recent statutory amendments allow captives to cover punitive damages, provided they do not arise from criminal acts.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Utah Insurance Code",
+    "min_capital": {
+      "Pure": "$250,000",
+      "Association": "$750,000",
+      "Industrial Insured": "$700,000",
+      "Sponsor": "$500,000"
+    },
+    "tax_notes": "No premium or state tax; flat annual fee of $6,375"
+  },
+  {
+    "name": "Vanuatu",
+    "summary": "Vanuatu is a full-service financial center regulated by the Reserve Bank of Vanuatu, offering easy repatriation for existing captives from other jurisdictions. The regulatory framework is flexible and mirrors other well-regulated jurisdictions in its reporting and capital systems. While directors do not need to be local, the captive must appoint a resident insurance manager and auditor.",
+    "jurisdiction": "Offshore",
+    "legislation": "Insurance Act No. 54 of 2005",
+    "min_capital": {
+      "General Classes": "$100,000",
+      "Life and Long Term": "$200,000"
+    },
+    "tax_notes": "$250 application fee; $2,000 annual license fee"
+  },
+  {
+    "name": "Vermont",
+    "summary": "Vermont is the largest captive domicile in the US and the third-largest in the world, pioneering the industry since 1981. The 1981 Special Insurers Act gave parents the freedom to operate without proving insurance unavailability in the traditional market. Recent 2021 amendments have further streamlined formation by allowing capital to be contributed after licensure rather than before.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Special Insurers Act of 1981",
+    "min_capital": {
+      "Pure / Branch": "$250,000",
+      "Sponsored": "$100,000",
+      "RRG": "$1,000,000",
+      "Association / Agency": "$500,000"
+    },
+    "tax_notes": "Largest US captive domicile; mature tax structure"
+  },
+  {
+    "name": "Virginia",
+    "summary": "Virginia law permits both stock and non-stock captive incorporations, with non-stock entities requiring a higher $4 million surplus. Association captives must demonstrate that they have been in existence for at least one year, unless each member contributes over $100,000 in gross annual premium. Pure captives are required to show aggregate annual premiums of at least $500,000.",
+    "jurisdiction": "Onshore (USA)",
+    "legislation": "Chapter 11, Title 38.2",
+    "min_capital": {
+      "Stock Company": "$1M Capital / $3M Surplus",
+      "Non-Stock Company": "$4M Surplus"
+    },
+    "tax_notes": "2.25% premium tax rate on gross written premiums"
+  }
+]
