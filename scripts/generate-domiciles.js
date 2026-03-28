@@ -237,6 +237,14 @@ function generateDomicilePage(domicile, allDomiciles) {
     return `<!DOCTYPE html>
 <html class="light" lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XW6PXCXNZC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XW6PXCXNZC');
+    </script>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>${domicile.name} Domicile | CanadianCaptive.com</title>
@@ -488,6 +496,14 @@ ${cardsHTML}
     return `<!DOCTYPE html>
 <html class="scroll-smooth light" lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XW6PXCXNZC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XW6PXCXNZC');
+    </script>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Global Captive Domiciles | CanadianCaptive.com</title>
