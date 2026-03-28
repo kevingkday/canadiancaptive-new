@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://canadiancaptive.com/sitemap.xml
+
+# Block utility scripts and data
+Disallow: /scripts/
+Disallow: /data/

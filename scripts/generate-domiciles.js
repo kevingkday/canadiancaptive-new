@@ -247,6 +247,13 @@ function generateDomicilePage(domicile, allDomiciles) {
     </script>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="keywords" content="${domicile.name} captive insurance, ${domicile.jurisdiction} domicile, captive formation" />
+    <link rel="canonical" href="https://canadiancaptive.com/domiciles/${domicile.slug}.html" />
+    <meta property="og:title" content="${domicile.name} Captive Insurance Domicile | CanadianCaptive.com" />
+    <meta property="og:description" content="${domicile.summary.substring(0, 160).replace(/"/g, '&quot;')}..." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://canadiancaptive.com/domiciles/${domicile.slug}.html" />
+    <meta property="og:site_name" content="CanadianCaptive.com" />
     <title>${domicile.name} Domicile | CanadianCaptive.com</title>
     <meta name="description" content="${domicile.summary.substring(0, 160).replace(/"/g, '&quot;')}..." />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -506,6 +513,12 @@ ${cardsHTML}
     </script>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="canonical" href="https://canadiancaptive.com/domiciles.html" />
+    <meta property="og:title" content="Global Captive Domiciles | CanadianCaptive.com" />
+    <meta property="og:description" content="Explore 60+ captive insurance domiciles worldwide. Compare jurisdictions, capital requirements, and tax environments." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://canadiancaptive.com/domiciles.html" />
+    <meta property="og:site_name" content="CanadianCaptive.com" />
     <title>Global Captive Domiciles | CanadianCaptive.com</title>
     <meta name="description" content="Explore 60+ captive insurance domiciles worldwide. Compare jurisdictions, capital requirements, and tax environments to find the right home for your captive." />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
