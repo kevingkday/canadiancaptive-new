@@ -3,5 +3,3 @@ Allow: /
 
 Sitemap: https://canadiancaptive.com/sitemap.xml
 
-# Block data folders that do not contain content for users
-Disallow: /data/

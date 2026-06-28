@@ -151,7 +151,7 @@
                 <a class="text-red-700 font-semibold border-b-2 border-red-700 pb-1 font-sans antialiased tracking-tight"
                     href="index.html">Home</a>
                 <a class="text-slate-600 hover:text-red-600 transition-colors font-sans antialiased tracking-tight"
-                    href="#">Services</a>
+                    href="index.html#services">Captive Lifecycle Phases</a>
                 <div class="relative group">
                     <a class="text-slate-600 hover:text-red-600 transition-colors font-sans antialiased tracking-tight cursor-pointer flex items-center gap-1"
                         href="domiciles.html">Domiciles <span
@@ -192,12 +192,10 @@
                 </div>
                 <h1
                     class="text-5xl md:text-7xl font-headline font-bold tracking-tight text-on-surface leading-[1.1] mb-8">
-                    Navigating the <span class="text-primary">Captive Insurance</span> Landscape for Canadian
-                    Organizations.
+                    The Independent Resource for <span class="text-primary">Canadian Captive Insurance</span>
                 </h1>
                 <p class="text-lg md:text-xl text-secondary max-w-xl leading-relaxed mb-10">
-                    We empower Canadian enterprises with sophisticated risk management vehicles, delivering absolute
-                    clarity and stability through intentional, expert-led consultancy.
+                    Access data on Canadian and offshore domiciles, connect with verified service providers, and evaluate self-insurance structures.
                 </p>
                 <div class="flex flex-wrap gap-4 items-center">
                     <button id="hero-voice-btn"
@@ -241,14 +239,16 @@
         <div class="absolute top-0 right-0 w-1/3 h-full bg-surface-container-low -z-10 opacity-50"></div>
     </section>
     <!-- Services Section -->
-    <section class="py-24 bg-surface-container-low">
+    <section id="services" class="py-24 bg-surface-container-low">
         <div class="max-w-7xl mx-auto px-6">
             <div class="mb-16">
                 <span class="text-primary font-label text-xs tracking-widest uppercase block mb-2">Core
                     Competencies</span>
-                <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4">Strategic Service Pillars
-                </h2>
-                <div class="horizon-line"></div>
+                <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4">Captive Lifecycle Phases</h2>
+                <p class="text-lg text-secondary max-w-3xl leading-relaxed mt-4">
+                    Understand the required steps to identify, establish, and manage a captive insurance entity.
+                </p>
+                <div class="horizon-line mt-4"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Service 1 -->
@@ -318,10 +318,9 @@
                         toward absolute risk sovereignty.</p>
                     <div class="bg-primary/5 p-8 rounded-xl border border-primary/10">
                         <h4 class="font-bold text-primary mb-2">Need immediate answers?</h4>
-                        <p class="text-sm text-secondary mb-4">Our consultants are available for a direct consultation
-                            regarding your specific sector requirements.</p>
-                        <a class="text-primary font-bold underline" href="#booking">Schedule a
-                            Discovery Call</a>
+                        <p class="text-sm text-secondary mb-4">Submit a project brief to connect with the right resources for your requirements.</p>
+                        <a class="text-primary font-bold underline" href="#contact">Submit a
+                            Project Brief</a>
                     </div>
                 </div>
                 <div class="lg:col-span-7 space-y-6">
@@ -376,12 +375,11 @@
                     </div>
                     <h2
                         class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight text-on-surface leading-[1.1] mb-6">
-                        Start Your Captive <span class="text-primary">Journey</span>
+                        Submit a <span class="text-primary">Project Brief</span>
                     </h2>
                     <div class="horizon-line mb-8"></div>
                     <p class="text-lg text-secondary leading-relaxed mb-8">
-                        Whether you're exploring captive insurance for the first time or looking to optimize an existing
-                        program, our team is ready to help. Reach out for a confidential consultation.
+                        Submit your organizational requirements and commercial insurance details. Our resource hub will evaluate your brief to help you identify optimal structures, domiciles, and service providers.
                     </p>
                     <div class="space-y-6">
                         <div class="flex items-center gap-4">
@@ -409,50 +407,82 @@
                         </div>
                     </div>
                 </div>
-                <div class="rounded-2xl shadow-lg border border-outline-variant/10 overflow-hidden"
-                    style="background-color:#EDF4FF">
-                    <iframe src="https://api.leadconnectorhq.com/widget/form/OvMxfTRQ8jaTlvkg1KkD"
-                        style="width:100%;height:566px;border:none;border-radius:12px" id="inline-OvMxfTRQ8jaTlvkg1KkD"
-                        data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-trigger-value=""
-                        data-activation-type="alwaysActivated" data-activation-value=""
-                        data-deactivation-type="neverDeactivate" data-deactivation-value="" data-form-name="Form 0"
-                        data-height="566" data-layout-iframe-id="inline-OvMxfTRQ8jaTlvkg1KkD"
-                        data-form-id="OvMxfTRQ8jaTlvkg1KkD" title="Contact Form">
-                    </iframe>
+                <div class="rounded-2xl shadow-lg border border-outline-variant/10 overflow-hidden animate-fade-in"
+                    style="background-color:#EDF4FF" id="project-brief">
+                    <form id="project-brief-form" class="space-y-5 p-8 md:p-10">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label for="form-name" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Full Name *</label>
+                                <input type="text" id="form-name" name="name" required
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-slate-900"
+                                    placeholder="John Doe" />
+                            </div>
+                            <div>
+                                <label for="form-company" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Company Name *</label>
+                                <input type="text" id="form-company" name="company" required
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-slate-900"
+                                    placeholder="Acme Corp" />
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label for="form-email" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Corporate Email *</label>
+                                <input type="email" id="form-email" name="email" required
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-slate-900"
+                                    placeholder="john@company.com" />
+                            </div>
+                            <div>
+                                <label for="form-phone" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Phone Number *</label>
+                                <input type="tel" id="form-phone" name="phone" required
+                                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-slate-900"
+                                    placeholder="+1 (555) 000-0000" />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="form-org-type" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Organization Type *</label>
+                            <select id="form-org-type" name="org_type" required
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-slate-900">
+                                <option value="" disabled selected>Select organization type...</option>
+                                <option value="Individual Corporation">Individual Corporation</option>
+                                <option value="Industry Association / Group">Industry Association / Group</option>
+                                <option value="Broker / Consultant">Broker / Consultant</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="form-spend" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Annual Commercial Premium Spend *</label>
+                            <select id="form-spend" name="spend" required
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-slate-900">
+                                <option value="" disabled selected>Select annual premium spend...</option>
+                                <option value="Under $1M">Under $1M</option>
+                                <option value="$1M–$5M">$1M–$5M</option>
+                                <option value="$5M+">$5M+</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="form-objective" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Primary Objective *</label>
+                            <select id="form-objective" name="objective" required
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all shadow-sm text-slate-900">
+                                <option value="" disabled selected>Select primary objective...</option>
+                                <option value="Lowering sector-wide costs">Lowering sector-wide costs</option>
+                                <option value="Managing niche risks">Managing niche risks</option>
+                                <option value="Exploring tax efficiencies">Exploring tax efficiencies</option>
+                            </select>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-primary text-on-primary font-bold py-4 px-6 rounded-xl hover:opacity-90 hover:shadow-lg transition-all duration-200 mt-2">
+                            Submit Brief
+                        </button>
+                    </form>
                 </div>
-            </div>
-        </div>
-    </section>
-    <!-- Booking Section -->
-    <section id="booking" class="py-24 bg-surface">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-12">
-                <div class="mb-6 flex items-center justify-center gap-4">
-                    <div class="h-px w-12 bg-primary"></div>
-                    <span class="text-secondary font-label text-xs tracking-widest uppercase">Book a Meeting</span>
-                    <div class="h-px w-12 bg-primary"></div>
-                </div>
-                <h2
-                    class="text-4xl md:text-5xl font-headline font-extrabold tracking-tight text-on-surface leading-[1.1] mb-6">
-                    Schedule a <span class="text-primary">Consultation</span>
-                </h2>
-                <div class="horizon-line mx-auto mb-6" style="width:20%"></div>
-                <p class="text-lg text-secondary max-w-2xl mx-auto leading-relaxed">
-                    Select a convenient time and we'll connect you with one of our captive insurance specialists for a
-                    confidential discussion.
-                </p>
-            </div>
-            <div class="rounded-2xl shadow-lg border border-outline-variant/10 overflow-hidden p-4"
-                style="background-color:#F7F9FF">
-                <iframe src="https://api.leadconnectorhq.com/widget/booking/1tZtadKUiygRAUQpd80E"
-                    style="width:100%;height:700px;border:none;overflow:hidden;" scrolling="no"
-                    id="1tZtadKUiygRAUQpd80E_1774631859859" title="Schedule a Consultation">
-                </iframe>
             </div>
         </div>
     </section>
 
-    <script src="https://link.msgsndr.com/js/form_embed.js"></script>
 
     <!-- Footer -->
     <footer class="w-full border-t border-slate-200 bg-slate-50">
@@ -629,6 +659,31 @@
                     }
                 });
             }, 500);
+        });
+
+        // --- Project Brief Form Submission ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('project-brief-form');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const container = form.parentElement;
+                    container.innerHTML = `
+                        <div class="flex flex-col items-center justify-center text-center p-8 md:p-12 min-h-[500px] bg-slate-50/50 rounded-2xl">
+                            <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-6 shadow-inner">
+                                <span class="material-symbols-outlined text-3xl text-emerald-700">check_circle</span>
+                            </div>
+                            <h3 class="text-2xl font-headline font-bold text-on-surface mb-3">Brief Submitted Successfully</h3>
+                            <p class="text-slate-600 text-sm max-w-sm leading-relaxed mb-8">
+                                Thank you for submitting your project brief. Our independent industry resource hub team will review your specifications and provide structured guidance.
+                            </p>
+                            <button onclick="window.location.reload()" class="bg-primary text-on-primary font-bold px-8 py-3 rounded-xl hover:opacity-90 hover:shadow-md transition-all text-sm">
+                                Submit Another Brief
+                            </button>
+                        </div>
+                    `;
+                });
+            }
         });
     </script>
 </body>

@@ -144,7 +144,7 @@ function buildNav(pathPrefix, activePage) {
                 <a class="${homeActive ? 'text-red-700 font-semibold border-b-2 border-red-700 pb-1' : 'text-slate-600 hover:text-red-600 transition-colors'} font-sans antialiased tracking-tight"
                     href="${pathPrefix}index.html">Home</a>
                 <a class="text-slate-600 hover:text-red-600 transition-colors font-sans antialiased tracking-tight"
-                    href="#">Services</a>
+                    href="${pathPrefix}index.html#services">Captive Lifecycle Phases</a>
                 <div class="relative group">
                     <a class="${domicilesActive ? 'text-red-700 font-semibold border-b-2 border-red-700 pb-1' : 'text-slate-600 hover:text-red-600 transition-colors'} font-sans antialiased tracking-tight cursor-pointer flex items-center gap-1"
                         href="${pathPrefix}domiciles.html">Domiciles <span class="material-symbols-outlined text-sm">expand_more</span></a>
