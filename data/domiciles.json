@@ -49,14 +49,47 @@
     "jurisdiction": "Onshore (Canada)",
     "legislation": "Alberta Insurance Act (General Provisions)",
     "min_capital": {
-      "General Requirement": "Subject to Superintendent approval"
+      "Single parent captives": "Capital Guideline for Captive Insurance Companies – November 2025"
     },
     "tax_notes": "Provincial premium taxes apply; competitive corporate tax rate of 8%",
-    "slug": "alberta",
     "contact_name": "Alberta Superintendent of Insurance",
-    "contact_email": null,
-    "last_verified": null,
-    "source_urls": []
+    "contact_email": "tbf.insurance-licens@gov.ab.ca",
+    "last_verified": "2026-06-29",
+    "source_urls": [
+      "https://www.alberta.ca/information-for-captive-insurers"
+    ],
+    "slug": "alberta",
+    "legislation_year": 2022,
+    "stats": {
+      "reporting_year": 2025,
+      "total_captives": 37,
+      "new_captives": 6,
+      "surrendered_licenses": 0,
+      "pure_captives": 37,
+      "group_captives": 0,
+      "sponsored_cell_captives": 0,
+      "individual_cells_count": 0,
+      "other_captives": 0
+    },
+    "types_allowed": [
+      "Single parent captives"
+    ],
+    "regulator_staff_count": null,
+    "fees": null,
+    "annual_filing_requirements": null,
+    "applicable_legislation": "Alberta Insurance Act",
+    "captive_administrator": {
+      "name": "Alberta Superintendent of Insurance",
+      "email": "tbf.insurance-licens@gov.ab.ca",
+      "phone": "780-643-2237",
+      "fax": "780-420-0752"
+    },
+    "licensing_speed": null,
+    "regulator": {
+      "name": "Alberta Treasury Board and Finance",
+      "address": "Alberta Superintendent of Insurance, Alberta Treasury Board and Finance, Financial Sector Regulation and Policy, 402 Terrace Building, 9515 107 Street, Edmonton, Alberta T5K 2C3",
+      "website": "https://www.alberta.ca/information-for-captive-insurers"
+    }
   },
   {
     "name": "Anguilla",
