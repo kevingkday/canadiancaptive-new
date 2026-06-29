@@ -223,16 +223,55 @@
     "jurisdiction": "Onshore (Canada)",
     "legislation": "Insurance (Captive Company) Act (ICCA)",
     "min_capital": {
-      "Minimum Capital and Reserve": "300,000 CAD"
+      "Pure, Association, & Sophisticated": "CAD 300,000"
     },
     "tax_notes": "Premium taxes set by the province where risk is located",
-    "contact_name": "BC Financial Services Authority",
-    "last_verified": "2026-03-27",
+    "contact_name": "Blair Morrison",
+    "contact_email": "bcfsa@bcfsa.ca",
+    "last_verified": "2026-06-29",
     "source_urls": [
       "https://www.bcfsa.ca/industry-resources/insurance-resources",
       "https://www.bcfsa.ca/about-us/contact-us",
-      "https://www.bcfsa.ca/industry-resources/insurance-resources/insurance-regulatory-information/insurance-regulatory-statements"
-    ]
+      "https://www.bcfsa.ca/industry-resources/insurance-resources/insurance-regulatory-information/insurance-regulatory-statements",
+      "https://www.fic.gov.bc.ca"
+    ],
+    "slug": "british-columbia",
+    "legislation_year": 1996,
+    "stats": {
+      "reporting_year": 2025,
+      "total_captives": 20,
+      "new_captives": 1,
+      "surrendered_licenses": 0,
+      "pure_captives": 17,
+      "group_captives": 3,
+      "sponsored_cell_captives": 0,
+      "individual_cells_count": 0,
+      "other_captives": 0
+    },
+    "types_allowed": [
+      "Single parent captives",
+      "Association captives"
+    ],
+    "regulator_staff_count": "11",
+    "fees": {
+      "licensing_incorporation": "CAD 3,000",
+      "annual_fees": "CAD 2,500",
+      "premium_tax_rate": "Premium taxes are set according to the province where the insured risk is located. Corporate tax rates: federal 15%, provincial 11%; premium tax rates: variable"
+    },
+    "annual_filing_requirements": "Meeting required in domicile.",
+    "applicable_legislation": "The British Columbia Financial Institutions Act; Insurance (Captive Company) Act.",
+    "captive_administrator": {
+      "name": "Blair Morrison",
+      "email": "bcfsa@bcfsa.ca",
+      "phone": "604-660-3555",
+      "fax": "604-660-3365"
+    },
+    "licensing_speed": "90 days or less",
+    "regulator": {
+      "name": "Financial Institutions Commission",
+      "address": "555 W. Hastings St., Suite 2800, Vancouver, BC V6B 4N6",
+      "website": "https://www.fic.gov.bc.ca"
+    }
   },
   {
     "name": "British Virgin Islands",
