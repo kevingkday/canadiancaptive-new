@@ -116,21 +116,6 @@
     "source_urls": []
   },
   {
-    "name": "The Bahamas",
-    "summary": "The Bahamas is a competitive international financial center that promotes cost-effective growth through the use of segregated account (cell) captives. The External Insurance Act of 2009 classifies all captives as 'restricted' external insurers, while the 2017 Commercial Enterprises Act encourages a domestic presence for specific industries. Licensing involves a robust process, including a pre-application meeting and a 30-to-60-day window to meet approval conditions.",
-    "jurisdiction": "Offshore",
-    "legislation": "External Insurance Act 2009",
-    "min_capital": {
-      "Share Capital": "$100,000 (additional regulatory capital may be required)"
-    },
-    "tax_notes": "$2,500 annual renewal fee for standalone captives",
-    "slug": "bahamas",
-    "contact_name": null,
-    "contact_email": null,
-    "last_verified": null,
-    "source_urls": []
-  },
-  {
     "name": "Bahrain",
     "summary": "Bahrain serves as a regional base for international insurers, with a sector regulated by the Central Bank of Bahrain (CBB) as a single regulator since 2002. The CBB differentiates between captive and commercial insurers, offering lower capital and solvency requirements for captives provided they do not include third-party liability risks. The domicile is supported by a large pool of brokers, actuaries, and insurance managers.",
     "jurisdiction": "Offshore",
@@ -171,11 +156,57 @@
       "Class 3": "$1,000,000 floor"
     },
     "tax_notes": "Tax-competitive environment",
-    "last_verified": "2026-03-27",
+    "last_verified": "2026-06-29",
     "source_urls": [
       "https://cdn.bma.bm/documents/2025-03-24-13-49-51-2023-Captive-Report.pdf",
-      "https://cdn.bma.bm/documents/2023-11-14-13-37-59-Insurance-Act-1978.pdf"
-    ]
+      "https://cdn.bma.bm/documents/2023-11-14-13-37-59-Insurance-Act-1978.pdf",
+      "https://www.bma.bm"
+    ],
+    "slug": "bermuda",
+    "legislation_year": 1978,
+    "stats": {
+      "reporting_year": 2025,
+      "total_captives": 610,
+      "new_captives": 9,
+      "surrendered_licenses": 31,
+      "pure_captives": 406,
+      "group_captives": 57,
+      "sponsored_cell_captives": 51,
+      "individual_cells_count": 2000,
+      "individual_cells_year": 2024,
+      "individual_cells_estimated": true,
+      "other_captives": 96
+    },
+    "types_allowed": [
+      "Single parent captives",
+      "Association captives",
+      "Group captives",
+      "Protected cell/segregated portfolio companies",
+      "Special purpose captives",
+      "Special purpose financial captives"
+    ],
+    "regulator_staff_count": "10-15",
+    "fees": {
+      "licensing_incorporation": "Class 1: $2,250; Class 2: $4,375; Class 3: $17,800 minimum - based on GWP",
+      "annual_fees": "Class 1: $2,250; Class 2: $4,375; Class 3: $17,800 minimum - based on GWP",
+      "premium_tax_rate": "None."
+    },
+    "annual_filing_requirements": "Meeting required anywhere offshore.",
+    "applicable_legislation": "The primary legislation relating to insurance business is the Insurance Act 1978, as amended, and related regulations.",
+    "captive_administrator": {
+      "name": "Marianne Suschak-Matvey",
+      "email": "msmatvey@bma.bm",
+      "phone": "441-295-5278",
+      "fax": "441-292-7471"
+    },
+    "licensing_speed": "2-4 weeks",
+    "regulator": {
+      "name": "Bermuda Monetary Authority",
+      "address": "43 Victoria St., Hamilton, HM 12",
+      "website": "https://www.bma.bm"
+    },
+    "contact_name": "Marianne Suschak-Matvey",
+    "contact_email": "msmatvey@bma.bm"
   },
   {
     "name": "British Columbia",
@@ -1005,6 +1036,21 @@
     },
     "tax_notes": "0.5% premium tax; $7,500 min / $200,000 max",
     "slug": "texas",
+    "contact_name": null,
+    "contact_email": null,
+    "last_verified": null,
+    "source_urls": []
+  },
+  {
+    "name": "The Bahamas",
+    "summary": "The Bahamas is a competitive international financial center that promotes cost-effective growth through the use of segregated account (cell) captives. The External Insurance Act of 2009 classifies all captives as 'restricted' external insurers, while the 2017 Commercial Enterprises Act encourages a domestic presence for specific industries. Licensing involves a robust process, including a pre-application meeting and a 30-to-60-day window to meet approval conditions.",
+    "jurisdiction": "Offshore",
+    "legislation": "External Insurance Act 2009",
+    "min_capital": {
+      "Share Capital": "$100,000 (additional regulatory capital may be required)"
+    },
+    "tax_notes": "$2,500 annual renewal fee for standalone captives",
+    "slug": "bahamas",
     "contact_name": null,
     "contact_email": null,
     "last_verified": null,

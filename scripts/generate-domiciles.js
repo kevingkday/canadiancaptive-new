@@ -65,6 +65,90 @@ function buildCapitalRows(minCapital) {
     ).join('\n');
 }
 
+function renderMetric(value, fallback = 'Pending verification') {
+    if (value === null || value === undefined || value === '') {
+        return `<span class="text-slate-400 italic font-normal">${fallback}</span>`;
+    }
+    return escapeTemplateValue(value);
+}
+
+function renderStatsBlock(stats) {
+    if (!stats) {
+        return `
+            <div class="col-span-full bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center py-12">
+                <span class="material-symbols-outlined text-4xl text-slate-300 mb-2">analytics</span>
+                <p class="text-secondary italic">Statistical profile pending verification for this domicile.</p>
+            </div>
+        `;
+    }
+
+    const cellText = stats.individual_cells_count 
+        ? `${stats.individual_cells_count}${stats.individual_cells_estimated ? ' (estimated)' : ''} as of ${stats.individual_cells_year || '2024'}`
+        : 'Pending verification';
+
+    return `
+        <!-- Domicile Statistics -->
+        <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+            <div>
+                <h4 class="font-bold text-lg mb-6 text-on-surface flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-xl">bar_chart</span>
+                    Captive Market Volume
+                </h4>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Reporting Year</span>
+                        <span class="font-semibold text-on-surface">${renderMetric(stats.reporting_year)}</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Total Active Captives</span>
+                        <span class="font-bold text-primary text-base">${renderMetric(stats.total_captives)}</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">New Captives Licensed</span>
+                        <span class="font-semibold text-on-surface">${renderMetric(stats.new_captives)}</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-1 text-sm">
+                        <span class="text-secondary">Surrendered Licenses</span>
+                        <span class="font-semibold text-on-surface">${renderMetric(stats.surrendered_licenses)}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Captive Breakdown -->
+        <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+            <div>
+                <h4 class="font-bold text-lg mb-6 text-on-surface flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-xl">pie_chart</span>
+                    Structure Distribution
+                </h4>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Pure / Single Parent</span>
+                        <span class="font-semibold text-on-surface">${renderMetric(stats.pure_captives)}</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Group / Association</span>
+                        <span class="font-semibold text-on-surface">${renderMetric(stats.group_captives)}</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Sponsored / Cell Captives</span>
+                        <span class="font-semibold text-on-surface">${renderMetric(stats.sponsored_cell_captives)}</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Individual Segregated Cells</span>
+                        <span class="font-semibold text-on-surface">${cellText}</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-1 text-sm">
+                        <span class="text-secondary">Other Allowed Types</span>
+                        <span class="font-semibold text-on-surface">${renderMetric(stats.other_captives)}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
 // ── Shared HTML Components ───────────────────────────────────────────────────
 
 const TAILWIND_CONFIG = `tailwind.config = {
@@ -297,12 +381,6 @@ ${buildNav(pathPrefix, 'domiciles')}
                         <p class="text-lg md:text-xl text-secondary max-w-3xl leading-relaxed mb-10">
                             ${domicile.summary}
                         </p>
-                        <div class="flex flex-wrap gap-4">
-                            <button class="bg-primary text-on-primary px-8 py-4 rounded-xl font-semibold flex items-center gap-2 hover:shadow-lg transition-all">
-                                Request ${domicile.name} Feasibility Study
-                                <span class="material-symbols-outlined">arrow_forward</span>
-                            </button>
-                        </div>
                     </div>
                     <div class="lg:col-span-4">
                         <div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 overflow-hidden">
@@ -380,6 +458,115 @@ ${capitalRows}
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Detailed Regulatory & Statistical Profile -->
+        <section class="py-24 bg-surface border-t border-outline-variant/10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="mb-12">
+                    <span class="text-primary font-label text-xs tracking-widest uppercase block mb-2">Detailed Profile</span>
+                    <h2 class="text-3xl md:text-4xl font-headline font-bold text-on-surface mb-4">Regulatory &amp; Statistical Profile</h2>
+                    <div class="horizon-line"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Column 1: Market & Structures -->
+                    <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
+                        ${renderStatsBlock(domicile.stats)}
+                        
+                        <!-- Types Allowed Card -->
+                        <div class="col-span-full bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                            <h4 class="font-bold text-lg mb-6 text-on-surface flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-xl">checklist</span>
+                                Authorized Captive Structures
+                            </h4>
+                            ${domicile.types_allowed && domicile.types_allowed.length > 0 
+                                ? `<div class="flex flex-wrap gap-2">
+                                     ${domicile.types_allowed.map(t => `<span class="bg-surface-container-low text-on-surface px-3.5 py-1.5 rounded-lg text-sm border border-outline-variant/10 font-medium">${escapeTemplateValue(t)}</span>`).join('')}
+                                   </div>`
+                                : `<p class="text-secondary italic">List of authorized captive structures pending verification.</p>`
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Column 2: Fees, Legislation, & Regulator Details -->
+                    <div class="space-y-8">
+                        <!-- Fees & Licensing Card -->
+                        <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                            <h4 class="font-bold text-lg mb-6 text-on-surface flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-xl">payments</span>
+                                Fees &amp; Solvency Compliance
+                            </h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Year Legislation Passed</div>
+                                    <div class="font-semibold text-on-surface text-sm">${renderMetric(domicile.legislation_year)}</div>
+                                </div>
+                                <div class="border-t border-outline-variant/10 pt-4">
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Licensing Speed</div>
+                                    <div class="font-semibold text-on-surface text-sm">${renderMetric(domicile.licensing_speed)}</div>
+                                </div>
+                                <div class="border-t border-outline-variant/10 pt-4">
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Premium Tax Rate</div>
+                                    <div class="font-semibold text-on-surface text-sm">${renderMetric(domicile.fees?.premium_tax_rate)}</div>
+                                </div>
+                                <div class="border-t border-outline-variant/10 pt-4">
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Incorporation / Initial Fee</div>
+                                    <div class="font-semibold text-secondary text-sm">${renderMetric(domicile.fees?.licensing_incorporation)}</div>
+                                </div>
+                                <div class="border-t border-outline-variant/10 pt-4">
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Annual Maintenance Fee</div>
+                                    <div class="font-semibold text-secondary text-sm">${renderMetric(domicile.fees?.annual_fees)}</div>
+                                </div>
+                                <div class="border-t border-outline-variant/10 pt-4">
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Annual Filing Requirements</div>
+                                    <div class="font-semibold text-secondary text-sm">${renderMetric(domicile.annual_filing_requirements)}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Regulatory Office Contacts -->
+                        <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
+                            <h4 class="font-bold text-lg mb-6 text-on-surface flex items-center gap-2">
+                                <span class="material-symbols-outlined text-primary text-xl">gavel</span>
+                                Regulatory Contact Office
+                            </h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Supervisory Authority</div>
+                                    <div class="font-semibold text-on-surface text-sm">${renderMetric(domicile.regulator?.name)}</div>
+                                    ${domicile.regulator?.website ? `<a href="${domicile.regulator.website}" target="_blank" rel="noopener noreferrer" class="text-primary text-xs hover:underline flex items-center gap-1 mt-1">${domicile.regulator.website} <span class="material-symbols-outlined text-[10px]">open_in_new</span></a>` : ''}
+                                </div>
+                                <div class="border-t border-outline-variant/10 pt-4">
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Office Address</div>
+                                    <div class="font-semibold text-secondary text-sm">${renderMetric(domicile.regulator?.address)}</div>
+                                </div>
+                                <div class="border-t border-outline-variant/10 pt-4">
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Regulatory Department Staff</div>
+                                    <div class="font-semibold text-on-surface text-sm">${domicile.regulator_staff_count ? `${escapeTemplateValue(domicile.regulator_staff_count)} FTEs` : `<span class="text-slate-400 italic font-normal">Pending verification</span>`}</div>
+                                </div>
+                                <div class="border-t border-outline-variant/10 pt-4">
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Captive Administrator</div>
+                                    <div class="font-semibold text-on-surface text-sm">${renderMetric(domicile.captive_administrator?.name)}</div>
+                                    ${domicile.captive_administrator?.email ? `<a href="mailto:${domicile.captive_administrator.email}" class="text-primary text-xs block hover:underline mt-1">${domicile.captive_administrator.email}</a>` : ''}
+                                    ${domicile.captive_administrator?.phone ? `<div class="text-xs text-secondary mt-1">Phone: ${domicile.captive_administrator.phone}</div>` : ''}
+                                    ${domicile.captive_administrator?.fax ? `<div class="text-xs text-secondary mt-0.5">Fax: ${domicile.captive_administrator.fax}</div>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Button Section -->
+        <section class="py-12 bg-surface-container-low border-t border-outline-variant/10 text-center">
+            <div class="max-w-7xl mx-auto px-6">
+                <a href="${pathPrefix}index.html#project-brief" class="bg-primary text-on-primary px-8 py-4 rounded-xl font-semibold inline-flex items-center gap-2 hover:shadow-lg transition-all">
+                    Request ${domicile.name} Feasibility Study
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </a>
             </div>
         </section>
 

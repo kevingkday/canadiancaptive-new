@@ -35,6 +35,60 @@
     "source_urls": {
       "type": "array",
       "items": { "type": "string", "format": "uri" }
+    },
+    "legislation_year": { "type": ["integer", "null"] },
+    "stats": {
+      "type": ["object", "null"],
+      "properties": {
+        "reporting_year": { "type": "integer" },
+        "total_captives": { "type": "integer" },
+        "new_captives": { "type": "integer" },
+        "surrendered_licenses": { "type": "integer" },
+        "pure_captives": { "type": "integer" },
+        "group_captives": { "type": "integer" },
+        "sponsored_cell_captives": { "type": "integer" },
+        "individual_cells_count": { "type": "integer" },
+        "individual_cells_year": { "type": "integer" },
+        "individual_cells_estimated": { "type": "boolean" },
+        "other_captives": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "types_allowed": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "regulator_staff_count": { "type": ["string", "null"] },
+    "fees": {
+      "type": ["object", "null"],
+      "properties": {
+        "licensing_incorporation": { "type": "string" },
+        "annual_fees": { "type": "string" },
+        "premium_tax_rate": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "annual_filing_requirements": { "type": ["string", "null"] },
+    "applicable_legislation": { "type": ["string", "null"] },
+    "captive_administrator": {
+      "type": ["object", "null"],
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": ["string", "null"] },
+        "phone": { "type": ["string", "null"] },
+        "fax": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "licensing_speed": { "type": ["string", "null"] },
+    "regulator": {
+      "type": ["object", "null"],
+      "properties": {
+        "name": { "type": "string" },
+        "address": { "type": ["string", "null"] },
+        "website": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
     }
   },
   "additionalProperties": false
