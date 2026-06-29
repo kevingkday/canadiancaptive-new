@@ -218,6 +218,7 @@ function buildNav(pathPrefix, activePage) {
     // pathPrefix: '' for root pages, '../' for /domiciles/ pages
     const homeActive = activePage === 'home';
     const domicilesActive = activePage === 'domiciles';
+    const serviceProvidersActive = activePage === 'service-providers';
 
     return `    <nav class="fixed top-0 w-full z-50 glass-nav shadow-sm">
         <div class="flex justify-between items-center max-w-7xl mx-auto px-6 py-4">
@@ -247,12 +248,14 @@ function buildNav(pathPrefix, activePage) {
                         </div>
                     </div>
                 </div>
+                <a class="${serviceProvidersActive ? 'text-red-700 font-semibold border-b-2 border-red-700 pb-1' : 'text-slate-600 hover:text-red-600 transition-colors'} font-sans antialiased tracking-tight"
+                    href="${pathPrefix}service-providers.html">Service Providers</a>
             </div>
             <div class="flex items-center gap-6">
-                <button
+                <a href="${pathPrefix}index.html#contact"
                     class="bg-primary text-on-primary px-6 py-2 rounded-xl font-semibold hover:opacity-90 transition-all scale-95 duration-200 ease-in-out">
                     Contact Us
-                </button>
+                </a>
             </div>
         </div>
     </nav>`;

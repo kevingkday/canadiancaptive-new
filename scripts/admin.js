@@ -1,7 +1,7 @@
 /**
  * admin.js
  * 
- * Local zero-dependency web server for managing domicile information.
+ * Local zero-dependency web server for managing Domicile and Service Provider directories.
  * Serves an interactive visual form at http://localhost:3000 to edit JSON data
  * and auto-triggers static page generation on save.
  * 
@@ -16,8 +16,10 @@ const { exec } = require('child_process');
 
 const PORT = process.env.PORT || 3000;
 const ROOT = path.join(__dirname, '..');
-const DATA_FILE = path.join(ROOT, 'data', 'domiciles.json');
-const REBUILD_SCRIPT = path.join(ROOT, 'scripts', 'generate-domiciles.js');
+const DOMICILES_DATA_FILE = path.join(ROOT, 'data', 'domiciles.json');
+const PROVIDERS_DATA_FILE = path.join(ROOT, 'data', 'service-providers.json');
+const DOMICILES_REBUILD_SCRIPT = path.join(ROOT, 'scripts', 'generate-domiciles.js');
+const PROVIDERS_REBUILD_SCRIPT = path.join(ROOT, 'scripts', 'generate-service-providers.js');
 
 // Set your password here or specify it as an environment variable (e.g. ADMIN_PASSWORD=mysecret)
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'canadian-captive-2026';
@@ -51,10 +53,10 @@ const server = http.createServer((req, res) => {
 
     // 3. API: Load Domiciles
     if (req.method === 'GET' && req.url === '/api/domiciles') {
-        fs.readFile(DATA_FILE, 'utf8', (err, data) => {
+        fs.readFile(DOMICILES_DATA_FILE, 'utf8', (err, data) => {
             if (err) {
                 res.writeHead(500, { 'Content-Type': 'application/json' });
-                res.end(JSON.stringify({ error: 'Failed to read data file' }));
+                res.end(JSON.stringify({ error: 'Failed to read domiciles data file' }));
                 return;
             }
             res.writeHead(200, { 'Content-Type': 'application/json' });
@@ -63,7 +65,21 @@ const server = http.createServer((req, res) => {
         return;
     }
 
-    // 4. API: Save Domicile & Rebuild
+    // 4. API: Load Service Providers
+    if (req.method === 'GET' && req.url === '/api/service-providers') {
+        fs.readFile(PROVIDERS_DATA_FILE, 'utf8', (err, data) => {
+            if (err) {
+                res.writeHead(500, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ error: 'Failed to read service providers data file' }));
+                return;
+            }
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(data);
+        });
+        return;
+    }
+
+    // 5. API: Save Domicile & Rebuild
     if (req.method === 'POST' && req.url === '/api/save') {
         let body = '';
         req.on('data', chunk => {
@@ -78,7 +94,7 @@ const server = http.createServer((req, res) => {
                     return;
                 }
 
-                fs.readFile(DATA_FILE, 'utf8', (err, data) => {
+                fs.readFile(DOMICILES_DATA_FILE, 'utf8', (err, data) => {
                     if (err) {
                         res.writeHead(500, { 'Content-Type': 'application/json' });
                         res.end(JSON.stringify({ error: 'Failed to read data file for saving' }));
@@ -98,7 +114,7 @@ const server = http.createServer((req, res) => {
                     // Sort alphabetically by name
                     domiciles.sort((a, b) => a.name.localeCompare(b.name));
 
-                    fs.writeFile(DATA_FILE, JSON.stringify(domiciles, null, 2), 'utf8', err => {
+                    fs.writeFile(DOMICILES_DATA_FILE, JSON.stringify(domiciles, null, 2), 'utf8', err => {
                         if (err) {
                             res.writeHead(500, { 'Content-Type': 'application/json' });
                             res.end(JSON.stringify({ error: 'Failed to write updated data file' }));
@@ -106,20 +122,87 @@ const server = http.createServer((req, res) => {
                         }
 
                         // Run rebuild script
-                        exec(`node "${REBUILD_SCRIPT}"`, (execErr, stdout, stderr) => {
+                        exec(`node "${DOMICILES_REBUILD_SCRIPT}"`, (execErr, stdout, stderr) => {
                             if (execErr) {
-                                console.error('Rebuild failed:', execErr);
+                                console.error('Domicile Rebuild failed:', execErr);
                                 res.writeHead(200, { 'Content-Type': 'application/json' });
                                 res.end(JSON.stringify({ 
                                     success: true, 
-                                    warning: 'Data saved, but page rebuild failed. Check terminal logs.',
+                                    warning: 'Domicile saved, but page rebuild failed. Check terminal logs.',
                                     rebuildError: execErr.message
                                 }));
                                 return;
                             }
-                            console.log('Rebuild output:', stdout);
+                            console.log('Domicile Rebuild output:', stdout);
                             res.writeHead(200, { 'Content-Type': 'application/json' });
-                            res.end(JSON.stringify({ success: true, message: 'Data saved and pages rebuilt successfully!' }));
+                            res.end(JSON.stringify({ success: true, message: 'Domicile saved and pages rebuilt successfully!' }));
+                        });
+                    });
+                });
+            } catch (parseErr) {
+                res.writeHead(400, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ error: 'Invalid JSON payload' }));
+            }
+        });
+        return;
+    }
+
+    // 6. API: Save Service Provider & Rebuild
+    if (req.method === 'POST' && req.url === '/api/service-providers/save') {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+        });
+        req.on('end', () => {
+            try {
+                const payload = JSON.parse(body);
+                if (!payload.id || !payload.name || !payload.category) {
+                    res.writeHead(400, { 'Content-Type': 'application/json' });
+                    res.end(JSON.stringify({ error: 'ID, Name, and Category are required' }));
+                    return;
+                }
+
+                fs.readFile(PROVIDERS_DATA_FILE, 'utf8', (err, data) => {
+                    if (err) {
+                        res.writeHead(500, { 'Content-Type': 'application/json' });
+                        res.end(JSON.stringify({ error: 'Failed to read data file for saving' }));
+                        return;
+                    }
+
+                    let providers = JSON.parse(data);
+                    const idx = providers.findIndex(p => p.id === payload.id);
+                    
+                    if (idx === -1) {
+                        providers.push(payload);
+                    } else {
+                        providers[idx] = { ...providers[idx], ...payload };
+                    }
+
+                    // Sort alphabetically by name
+                    providers.sort((a, b) => a.name.localeCompare(b.name));
+
+                    fs.writeFile(PROVIDERS_DATA_FILE, JSON.stringify(providers, null, 2), 'utf8', err => {
+                        if (err) {
+                            res.writeHead(500, { 'Content-Type': 'application/json' });
+                            res.end(JSON.stringify({ error: 'Failed to write updated providers data file' }));
+                            return;
+                        }
+
+                        // Run rebuild script
+                        exec(`node "${PROVIDERS_REBUILD_SCRIPT}"`, (execErr, stdout, stderr) => {
+                            if (execErr) {
+                                console.error('Providers Rebuild failed:', execErr);
+                                res.writeHead(200, { 'Content-Type': 'application/json' });
+                                res.end(JSON.stringify({ 
+                                    success: true, 
+                                    warning: 'Provider saved, but directory rebuild failed. Check terminal logs.',
+                                    rebuildError: execErr.message
+                                }));
+                                return;
+                            }
+                            console.log('Providers Rebuild output:', stdout);
+                            res.writeHead(200, { 'Content-Type': 'application/json' });
+                            res.end(JSON.stringify({ success: true, message: 'Service Provider saved and directory rebuilt successfully!' }));
                         });
                     });
                 });
@@ -137,7 +220,7 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
     console.log(`==================================================`);
-    console.log(` Domicile Data Manager is running locally!`);
+    console.log(` Domicile & Provider Data Manager is running!`);
     console.log(` Access interface: http://localhost:${PORT}`);
     console.log(` Default Password: canadian-captive-2026`);
     console.log(` Press Ctrl+C to shut down the server.`);
@@ -150,7 +233,7 @@ function getAdminHtml() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domicile Data Manager | CanadianCaptive</title>
+    <title>Directory Data Manager | CanadianCaptive</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
@@ -164,7 +247,7 @@ function getAdminHtml() {
         <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full mx-4 border border-slate-200 text-center">
             <span class="material-symbols-outlined text-red-700 text-5xl mb-4">lock</span>
             <h2 class="text-2xl font-bold text-slate-900 mb-2">Password Protected</h2>
-            <p class="text-sm text-slate-500 mb-6">Enter password to manage CanadianCaptive Domiciles.</p>
+            <p class="text-sm text-slate-500 mb-6">Enter password to manage CanadianCaptive Directories.</p>
             
             <form onsubmit="tryLogin(event)" class="space-y-4">
                 <input type="password" id="login-password" required placeholder="Enter password" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm text-center focus:outline-none focus:border-red-700">
@@ -178,17 +261,28 @@ function getAdminHtml() {
 
     <!-- Header -->
     <header class="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
-        <div class="flex items-center gap-3">
-            <span class="material-symbols-outlined text-red-700 text-3xl font-bold">gavel</span>
-            <div>
-                <h1 class="text-xl font-bold text-slate-900">Domicile Data Manager</h1>
-                <p class="text-xs text-slate-500">CanadianCaptive.com Local Admin Console</p>
+        <div class="flex items-center gap-6">
+            <div class="flex items-center gap-3 border-r border-slate-200 pr-6">
+                <span class="material-symbols-outlined text-red-700 text-3xl font-bold">dashboard</span>
+                <div>
+                    <h1 class="text-xl font-bold text-slate-900">Directory Manager</h1>
+                    <p class="text-xs text-slate-500">CanadianCaptive.com Admin</p>
+                </div>
+            </div>
+            <!-- Mode Toggle Tabs -->
+            <div class="flex gap-2">
+                <button id="mode-btn-domiciles" onclick="setMode('domiciles')" class="px-4 py-2 text-sm font-semibold rounded-lg bg-red-50 text-red-700 border border-red-200">
+                    <span class="material-symbols-outlined text-base mr-1.5 align-middle">gavel</span> Domiciles
+                </button>
+                <button id="mode-btn-providers" onclick="setMode('providers')" class="px-4 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-950 border border-transparent">
+                    <span class="material-symbols-outlined text-base mr-1.5 align-middle">handshake</span> Service Providers
+                </button>
             </div>
         </div>
         <div class="flex items-center gap-4">
             <span id="status-toast" class="hidden text-sm font-medium px-4 py-2 rounded-lg"></span>
-            <button onclick="saveCurrentDomicile()" id="btn-save" class="bg-red-700 text-white font-semibold px-6 py-2.5 rounded-lg flex items-center gap-2 hover:bg-red-800 shadow transition-all disabled:opacity-50">
-                <span class="material-symbols-outlined text-lg">save</span> Save &amp; Rebuild Pages
+            <button onclick="saveCurrentEntity()" id="btn-save" class="bg-red-700 text-white font-semibold px-6 py-2.5 rounded-lg flex items-center gap-2 hover:bg-red-800 shadow transition-all disabled:opacity-50">
+                <span class="material-symbols-outlined text-lg">save</span> Save &amp; Rebuild
             </button>
         </div>
     </header>
@@ -196,243 +290,313 @@ function getAdminHtml() {
     <div class="flex-1 flex overflow-hidden">
         <!-- Sidebar -->
         <aside class="w-80 border-r border-slate-200 bg-white flex flex-col sticky top-16 h-[calc(100vh-4.5rem)]">
-            <div class="p-4 border-b border-slate-100">
+            <div class="p-4 border-b border-slate-100 flex flex-col gap-2">
                 <div class="relative">
                     <span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-lg">search</span>
-                    <input type="text" id="search-input" oninput="filterDomiciles()" placeholder="Search 68 domiciles..." class="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                    <input type="text" id="search-input" oninput="filterEntities()" placeholder="Search directory..." class="w-full pl-9 pr-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
                 </div>
+                <button onclick="createNewEntity()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 py-2 rounded-lg text-xs font-semibold flex items-center justify-center gap-1">
+                    <span class="material-symbols-outlined text-sm">add</span> Add New Entry
+                </button>
             </div>
-            <div id="domiciles-list" class="flex-1 overflow-y-auto divide-y divide-slate-100">
+            <div id="entities-list" class="flex-1 overflow-y-auto divide-y divide-slate-100">
                 <!-- Filled dynamically -->
             </div>
         </aside>
 
         <!-- Main Form Area -->
         <main class="flex-1 overflow-y-auto p-8 max-w-5xl mx-auto w-full">
-            <div class="flex justify-between items-center mb-8 border-b border-slate-200 pb-4">
-                <div>
-                    <h2 id="active-domicile-name" class="text-3xl font-bold text-slate-900">Select Domicile</h2>
-                    <p id="active-domicile-slug" class="text-sm text-slate-500 font-mono mt-1"></p>
+            <!-- Domicile Form Layout -->
+            <div id="domiciles-editor-container">
+                <div class="flex justify-between items-center mb-8 border-b border-slate-200 pb-4">
+                    <div>
+                        <h2 id="active-domicile-name" class="text-3xl font-bold text-slate-900">Select Domicile</h2>
+                        <p id="active-domicile-slug" class="text-sm text-slate-500 font-mono mt-1"></p>
+                    </div>
+                    <span id="badge-jurisdiction" class="hidden px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider"></span>
                 </div>
-                <span id="badge-jurisdiction" class="hidden px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider"></span>
+
+                <!-- Tab Buttons -->
+                <div class="flex border-b border-slate-200 mb-8 overflow-x-auto gap-2">
+                    <button onclick="switchTab('tab-general')" id="btn-tab-general" class="tab-btn border-b-2 border-red-700 text-red-700 font-semibold px-4 py-3 text-sm flex items-center gap-1.5 whitespace-nowrap">
+                        <span class="material-symbols-outlined text-lg">info</span> General Info
+                    </button>
+                    <button onclick="switchTab('tab-stats')" id="btn-tab-stats" class="tab-btn border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium px-4 py-3 text-sm flex items-center gap-1.5 whitespace-nowrap">
+                        <span class="material-symbols-outlined text-lg">analytics</span> Statistics (2025)
+                    </button>
+                    <button onclick="switchTab('tab-fees')" id="btn-tab-fees" class="tab-btn border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium px-4 py-3 text-sm flex items-center gap-1.5 whitespace-nowrap">
+                        <span class="material-symbols-outlined text-lg">payments</span> Fees &amp; Compliance
+                    </button>
+                    <button onclick="switchTab('tab-contacts')" id="btn-tab-contacts" class="tab-btn border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium px-4 py-3 text-sm flex items-center gap-1.5 whitespace-nowrap">
+                        <span class="material-symbols-outlined text-lg">gavel</span> Regulator &amp; Contact
+                    </button>
+                </div>
+
+                <form id="domicile-form" class="space-y-6" onsubmit="event.preventDefault();">
+                    <!-- TAB: General Info -->
+                    <div id="tab-general" class="tab-content space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Domicile Name *</label>
+                                <input type="text" id="input-name" required onchange="suggestSlug(this.value)" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Slug (URL Path) *</label>
+                                <input type="text" id="input-slug" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm font-mono focus:outline-none focus:border-red-700">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Jurisdiction Type *</label>
+                                <select id="input-jurisdiction" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                                    <option value="Onshore (Canada)">Onshore (Canada)</option>
+                                    <option value="Onshore (USA)">Onshore (USA)</option>
+                                    <option value="Onshore (EU)">Onshore (EU)</option>
+                                    <option value="Offshore">Offshore</option>
+                                    <option value="Offshore (Caribbean)">Offshore (Caribbean)</option>
+                                    <option value="Offshore (UAE)">Offshore (UAE)</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Primary Enabling Legislation *</label>
+                                <input type="text" id="input-legislation" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Summary / Overview Description *</label>
+                            <textarea id="input-summary" rows="4" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700 leading-relaxed"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Tax Notes / Environment *</label>
+                            <input type="text" id="input-tax-notes" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                        </div>
+                    </div>
+
+                    <!-- TAB: Statistics -->
+                    <div id="tab-stats" class="tab-content hidden space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-red-700 mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-base">bar_chart</span> Captive Volume Counts</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Reporting Stats Year</label>
+                                    <input type="number" id="stats-reporting-year" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Total Active Captives</label>
+                                    <input type="number" id="stats-total" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">New Captives Licensed</label>
+                                    <input type="number" id="stats-new" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Surrendered Licenses</label>
+                                    <input type="number" id="stats-surrendered" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-red-700 mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-base">pie_chart</span> Structure Breakdown</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Pure / Single Parent Captives</label>
+                                    <input type="number" id="stats-pure" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Group / Association Captives</label>
+                                    <input type="number" id="stats-group" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Sponsored / Cell Captives</label>
+                                    <input type="number" id="stats-sponsored" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Individual Cells / Series</label>
+                                    <input type="number" id="stats-cells-count" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Cells Year Counted</label>
+                                    <input type="number" id="stats-cells-year" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div class="flex items-center h-full pt-6">
+                                    <input type="checkbox" id="stats-cells-estimated" class="w-4 h-4 text-red-700 border-slate-300 rounded focus:ring-red-500">
+                                    <label class="ml-2 text-xs font-semibold text-slate-600">Cells count is estimated</label>
+                                </div>
+                                <div class="col-span-full">
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Other Captives count (Industrial, SPFI, Branch, agency)</label>
+                                    <input type="number" id="stats-other" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Fees & Compliance -->
+                    <div id="tab-fees" class="tab-content hidden space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Year Legislation Passed</label>
+                                <input type="number" id="input-legislation-year" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Licensing Speed</label>
+                                <input type="text" id="input-licensing-speed" placeholder="e.g. 2-4 weeks" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Premium Tax Rate</label>
+                                <input type="text" id="input-premium-tax-rate" placeholder="e.g. None or 0.5% - 2%" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Incorporation / Initial Licensing Fee</label>
+                                <input type="text" id="input-licensing-fee" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm">
+                            </div>
+                            <div class="col-span-full">
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Annual Renewal Maintenance Fee</label>
+                                <input type="text" id="input-annual-fee" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm">
+                            </div>
+                            <div class="col-span-full">
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Annual Filing Requirements</label>
+                                <textarea id="input-filing-requirements" rows="2" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB: Regulator & Contact -->
+                    <div id="tab-contacts" class="tab-content hidden space-y-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-red-700 mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-base">domain</span> Supervisory Authority</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Authority Name</label>
+                                    <input type="text" id="regulator-name" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Authority Website</label>
+                                    <input type="url" id="regulator-website" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Office Address</label>
+                                    <input type="text" id="regulator-address" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Regulatory Team Staff Size</label>
+                                    <input type="text" id="regulator-staff" placeholder="e.g. 10-15" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-red-700 mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-base">person</span> Captive Administrator</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Administrator Name</label>
+                                    <input type="text" id="admin-name" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Contact Email</label>
+                                    <input type="email" id="admin-email" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Contact Phone</label>
+                                    <input type="text" id="admin-phone" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Contact Fax</label>
+                                    <input type="text" id="admin-fax" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                            <h3 class="text-sm font-bold uppercase tracking-wider text-red-700 mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-base">checklist</span> Additional Information</h3>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-2">Authorized Captive Structures (One per line)</label>
+                                <textarea id="input-types-allowed" rows="3" placeholder="Single parent captives&#10;Group captives" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm leading-relaxed"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-2">Verification Sources (One URL per line)</label>
+                                <textarea id="input-sources" rows="3" placeholder="https://www.bma.bm" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-mono leading-relaxed"></textarea>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-2">Last Verification Date (YYYY-MM-DD)</label>
+                                    <input type="text" id="input-last-verified" placeholder="2026-06-29" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-mono">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
 
-            <!-- Tab Buttons -->
-            <div class="flex border-b border-slate-200 mb-8 overflow-x-auto gap-2">
-                <button onclick="switchTab('tab-general')" id="btn-tab-general" class="tab-btn border-b-2 border-red-700 text-red-700 font-semibold px-4 py-3 text-sm flex items-center gap-1.5 whitespace-nowrap">
-                    <span class="material-symbols-outlined text-lg">info</span> General Info
-                </button>
-                <button onclick="switchTab('tab-stats')" id="btn-tab-stats" class="tab-btn border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium px-4 py-3 text-sm flex items-center gap-1.5 whitespace-nowrap">
-                    <span class="material-symbols-outlined text-lg">analytics</span> Statistics (2025)
-                </button>
-                <button onclick="switchTab('tab-fees')" id="btn-tab-fees" class="tab-btn border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium px-4 py-3 text-sm flex items-center gap-1.5 whitespace-nowrap">
-                    <span class="material-symbols-outlined text-lg">payments</span> Fees &amp; Compliance
-                </button>
-                <button onclick="switchTab('tab-contacts')" id="btn-tab-contacts" class="tab-btn border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium px-4 py-3 text-sm flex items-center gap-1.5 whitespace-nowrap">
-                    <span class="material-symbols-outlined text-lg">gavel</span> Regulator &amp; Contact
-                </button>
-            </div>
+            <!-- Service Providers Form Layout (Hidden by Default) -->
+            <div id="providers-editor-container" class="hidden">
+                <div class="flex justify-between items-center mb-8 border-b border-slate-200 pb-4">
+                    <div>
+                        <h2 id="active-provider-name" class="text-3xl font-bold text-slate-900">Select Provider</h2>
+                        <p id="active-provider-id" class="text-sm text-slate-500 font-mono mt-1"></p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span id="badge-provider-category" class="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-slate-100 text-slate-700">Category</span>
+                        <span id="badge-provider-verified" class="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-emerald-100 text-emerald-700">Verified</span>
+                    </div>
+                </div>
 
-            <form id="domicile-form" class="space-y-6" onsubmit="event.preventDefault();">
-                <!-- TAB: General Info -->
-                <div id="tab-general" class="tab-content space-y-6">
+                <form id="provider-form" class="space-y-6" onsubmit="event.preventDefault();">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Domicile Name *</label>
-                            <input type="text" id="input-name" required onchange="suggestSlug(this.value)" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Provider Name *</label>
+                            <input type="text" id="provider-input-name" required onchange="suggestProviderId(this.value)" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Slug (URL Path) *</label>
-                            <input type="text" id="input-slug" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm font-mono focus:outline-none focus:border-red-700">
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Unique ID (URL Slug) *</label>
+                            <input type="text" id="provider-input-id" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm font-mono focus:outline-none focus:border-red-700">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Jurisdiction Type *</label>
-                            <select id="input-jurisdiction" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
-                                <option value="Onshore (Canada)">Onshore (Canada)</option>
-                                <option value="Onshore (USA)">Onshore (USA)</option>
-                                <option value="Onshore (EU)">Onshore (EU)</option>
-                                <option value="Offshore">Offshore</option>
-                                <option value="Offshore (Caribbean)">Offshore (Caribbean)</option>
-                                <option value="Offshore (UAE)">Offshore (UAE)</option>
-                                <option value="Other">Other</option>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Specialty Category *</label>
+                            <select id="provider-input-category" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                                <option value="Captive Manager">Captive Manager</option>
+                                <option value="Actuary">Actuary</option>
+                                <option value="Legal Advisor">Legal Advisor</option>
+                                <option value="Auditor & Accountant">Auditor &amp; Accountant</option>
+                                <option value="Reinsurance Broker">Reinsurance Broker</option>
+                                <option value="Fronting Carrier">Fronting Carrier</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Primary Enabling Legislation *</label>
-                            <input type="text" id="input-legislation" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Corporate Headquarters *</label>
+                            <input type="text" id="provider-input-headquarters" required placeholder="e.g. Seattle, WA, USA" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Website URL *</label>
+                            <input type="url" id="provider-input-website" required placeholder="https://example.com" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Contact Email Address</label>
+                            <input type="email" id="provider-input-email" placeholder="contact@example.com" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-slate-700 mb-2">Contact Phone Number</label>
+                            <input type="text" id="provider-input-phone" placeholder="e.g. 555-555-5555" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
+                        </div>
+                        <div class="flex items-center h-full pt-8">
+                            <input type="checkbox" id="provider-input-verified" class="w-4 h-4 text-red-700 border-slate-300 rounded focus:ring-red-500">
+                            <label class="ml-2 text-sm font-semibold text-slate-700">Verified Service Provider</label>
                         </div>
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Summary / Overview Description *</label>
-                        <textarea id="input-summary" rows="4" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700 leading-relaxed"></textarea>
+                        <label class="block text-sm font-semibold text-slate-700 mb-2">Description / Bio *</label>
+                        <textarea id="provider-input-description" rows="4" required placeholder="Provide a brief summary of the services and solutions offered..." class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700 leading-relaxed"></textarea>
                     </div>
-                    <div>
-                        <label class="block text-sm font-semibold text-slate-700 mb-2">Tax Notes / Environment *</label>
-                        <input type="text" id="input-tax-notes" required class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm focus:outline-none focus:border-red-700">
-                    </div>
-                </div>
-
-                <!-- TAB: Statistics -->
-                <div id="tab-stats" class="tab-content hidden space-y-6">
-                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-red-700 mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-base">bar_chart</span> Captive Volume Counts</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Reporting Stats Year</label>
-                                <input type="number" id="stats-reporting-year" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Total Active Captives</label>
-                                <input type="number" id="stats-total" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">New Captives Licensed</label>
-                                <input type="number" id="stats-new" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Surrendered Licenses</label>
-                                <input type="number" id="stats-surrendered" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-red-700 mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-base">pie_chart</span> Structure Breakdown</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Pure / Single Parent Captives</label>
-                                <input type="number" id="stats-pure" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Group / Association Captives</label>
-                                <input type="number" id="stats-group" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Sponsored / Cell Captives</label>
-                                <input type="number" id="stats-sponsored" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Individual Cells / Series</label>
-                                <input type="number" id="stats-cells-count" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Cells Year Counted</label>
-                                <input type="number" id="stats-cells-year" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div class="flex items-center h-full pt-6">
-                                <input type="checkbox" id="stats-cells-estimated" class="w-4 h-4 text-red-700 border-slate-300 rounded focus:ring-red-500">
-                                <label class="ml-2 text-xs font-semibold text-slate-600">Cells count is estimated</label>
-                            </div>
-                            <div class="col-span-full">
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Other Captives count (Industrial, SPFI, Branch, agency)</label>
-                                <input type="number" id="stats-other" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TAB: Fees & Compliance -->
-                <div id="tab-fees" class="tab-content hidden space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Year Legislation Passed</label>
-                            <input type="number" id="input-legislation-year" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Licensing Speed</label>
-                            <input type="text" id="input-licensing-speed" placeholder="e.g. 2-4 weeks" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Premium Tax Rate</label>
-                            <input type="text" id="input-premium-tax-rate" placeholder="e.g. None or 0.5% - 2%" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Incorporation / Initial Licensing Fee</label>
-                            <input type="text" id="input-licensing-fee" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm">
-                        </div>
-                        <div class="col-span-full">
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Annual Renewal Maintenance Fee</label>
-                            <input type="text" id="input-annual-fee" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm">
-                        </div>
-                        <div class="col-span-full">
-                            <label class="block text-sm font-semibold text-slate-700 mb-2">Annual Filing Requirements</label>
-                            <textarea id="input-filing-requirements" rows="2" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm"></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TAB: Regulator & Contact -->
-                <div id="tab-contacts" class="tab-content hidden space-y-6">
-                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-red-700 mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-base">domain</span> Supervisory Authority</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Authority Name</label>
-                                <input type="text" id="regulator-name" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Authority Website</label>
-                                <input type="url" id="regulator-website" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Office Address</label>
-                                <input type="text" id="regulator-address" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Regulatory Team Staff Size</label>
-                                <input type="text" id="regulator-staff" placeholder="e.g. 10-15" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-red-700 mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-base">person</span> Captive Administrator</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Administrator Name</label>
-                                <input type="text" id="admin-name" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Contact Email</label>
-                                <input type="email" id="admin-email" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Contact Phone</label>
-                                <input type="text" id="admin-phone" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Contact Fax</label>
-                                <input type="text" id="admin-fax" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-                        <h3 class="text-sm font-bold uppercase tracking-wider text-red-700 mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-base">checklist</span> Additional Information</h3>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-2">Authorized Captive Structures (One per line)</label>
-                            <textarea id="input-types-allowed" rows="3" placeholder="Single parent captives&#10;Group captives" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm leading-relaxed"></textarea>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-600 mb-2">Verification Sources (One URL per line)</label>
-                            <textarea id="input-sources" rows="3" placeholder="https://www.bma.bm" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-mono leading-relaxed"></textarea>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-600 mb-2">Last Verification Date (YYYY-MM-DD)</label>
-                                <input type="text" id="input-last-verified" placeholder="2026-06-29" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-mono">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </main>
     </div>
 
     <!-- Frontend Script -->
     <script>
         let domicilesList = [];
+        let providersList = [];
         let activeIndex = -1;
+        let currentMode = 'domiciles'; // 'domiciles' or 'providers'
 
         async function tryLogin(e) {
             if (e) e.preventDefault();
@@ -444,18 +608,20 @@ function getAdminHtml() {
             err.classList.add('hidden');
 
             try {
-                const response = await fetch('/api/domiciles', {
-                    headers: { 'Authorization': password }
-                });
-                
-                if (response.status === 200) {
+                // Pre-load domiciles
+                const resp1 = await fetch('/api/domiciles', { headers: { 'Authorization': password } });
+                if (resp1.status === 200) {
                     sessionStorage.setItem('admin_password', password);
-                    domicilesList = await response.json();
-                    document.getElementById('login-overlay').classList.add('hidden');
-                    renderList();
-                    if (domicilesList.length > 0) {
-                        selectDomicile(0);
+                    domicilesList = await resp1.json();
+                    
+                    // Pre-load providers
+                    const resp2 = await fetch('/api/service-providers', { headers: { 'Authorization': password } });
+                    if (resp2.status === 200) {
+                        providersList = await resp2.json();
                     }
+
+                    document.getElementById('login-overlay').classList.add('hidden');
+                    setMode('domiciles');
                 } else {
                     err.innerText = 'Incorrect password.';
                     err.classList.remove('hidden');
@@ -476,14 +642,47 @@ function getAdminHtml() {
             }
         }
 
+        function setMode(mode) {
+            currentMode = mode;
+            activeIndex = -1;
+            
+            // Toggle header button styling
+            const btnD = document.getElementById('mode-btn-domiciles');
+            const btnP = document.getElementById('mode-btn-providers');
+            
+            if (mode === 'domiciles') {
+                btnD.className = 'px-4 py-2 text-sm font-semibold rounded-lg bg-red-50 text-red-700 border border-red-200';
+                btnP.className = 'px-4 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-950 border border-transparent';
+                document.getElementById('domiciles-editor-container').classList.remove('hidden');
+                document.getElementById('providers-editor-container').classList.add('hidden');
+                document.getElementById('search-input').placeholder = 'Search 68 domiciles...';
+                renderList();
+                if (domicilesList.length > 0) selectDomicile(0);
+            } else {
+                btnP.className = 'px-4 py-2 text-sm font-semibold rounded-lg bg-red-50 text-red-700 border border-red-200';
+                btnD.className = 'px-4 py-2 text-sm font-medium rounded-lg text-slate-600 hover:text-slate-950 border border-transparent';
+                document.getElementById('domiciles-editor-container').classList.add('hidden');
+                document.getElementById('providers-editor-container').classList.remove('hidden');
+                document.getElementById('search-input').placeholder = 'Search service providers...';
+                renderList();
+                if (providersList.length > 0) selectProvider(0);
+            }
+        }
+
         function renderList() {
-            const container = document.getElementById('domiciles-list');
+            const container = document.getElementById('entities-list');
             const searchVal = document.getElementById('search-input').value.toLowerCase();
             container.innerHTML = '';
 
-            domicilesList.forEach((d, idx) => {
-                if (searchVal && !d.name.toLowerCase().includes(searchVal) && !d.jurisdiction.toLowerCase().includes(searchVal)) {
-                    return;
+            const list = currentMode === 'domiciles' ? domicilesList : providersList;
+
+            list.forEach((item, idx) => {
+                if (searchVal) {
+                    if (currentMode === 'domiciles') {
+                        if (!item.name.toLowerCase().includes(searchVal) && !item.jurisdiction.toLowerCase().includes(searchVal)) return;
+                    } else {
+                        if (!item.name.toLowerCase().includes(searchVal) && !item.category.toLowerCase().includes(searchVal)) return;
+                    }
                 }
 
                 const isActive = idx === activeIndex;
@@ -491,16 +690,54 @@ function getAdminHtml() {
                 
                 const div = document.createElement('div');
                 div.className = \`p-4 cursor-pointer transition-colors \${activeClasses}\`;
-                div.onclick = () => selectDomicile(idx);
-                div.innerHTML = \`
-                    <div class="text-sm font-medium">\${d.name}</div>
-                    <div class="text-xs text-slate-400 mt-1 flex justify-between">
-                        <span>\${d.jurisdiction}</span>
-                        <span>\${d.slug}</span>
-                    </div>
-                \`;
+                div.onclick = () => {
+                    if (currentMode === 'domiciles') selectDomicile(idx);
+                    else selectProvider(idx);
+                };
+                
+                if (currentMode === 'domiciles') {
+                    div.innerHTML = \`
+                        <div class="text-sm font-medium">\${item.name}</div>
+                        <div class="text-xs text-slate-400 mt-1 flex justify-between">
+                            <span>\${item.jurisdiction}</span>
+                            <span>/\${item.slug}</span>
+                        </div>
+                    \`;
+                } else {
+                    div.innerHTML = \`
+                        <div class="text-sm font-medium">\${item.name}</div>
+                        <div class="text-xs text-slate-400 mt-1 flex justify-between">
+                            <span>\${item.category}</span>
+                            <span>\${item.verified ? 'Verified' : 'Pending'}</span>
+                        </div>
+                    \`;
+                }
                 container.appendChild(div);
             });
+        }
+
+        function createNewEntity() {
+            activeIndex = -1;
+            renderList();
+
+            if (currentMode === 'domiciles') {
+                document.getElementById('active-domicile-name').innerText = 'New Domicile';
+                document.getElementById('active-domicile-slug').innerText = '/new';
+                document.getElementById('badge-jurisdiction').classList.add('hidden');
+                
+                // Clear Form
+                document.getElementById('domicile-form').reset();
+                document.getElementById('input-types-allowed').value = '';
+                document.getElementById('input-sources').value = '';
+                switchTab('tab-general');
+            } else {
+                document.getElementById('active-provider-name').innerText = 'New Provider';
+                document.getElementById('active-provider-id').innerText = 'new-id';
+                document.getElementById('badge-provider-category').classList.add('hidden');
+                document.getElementById('badge-provider-verified').classList.add('hidden');
+                
+                document.getElementById('provider-form').reset();
+            }
         }
 
         function selectDomicile(idx) {
@@ -579,6 +816,37 @@ function getAdminHtml() {
             switchTab('tab-general');
         }
 
+        function selectProvider(idx) {
+            activeIndex = idx;
+            renderList();
+
+            const p = providersList[idx];
+            document.getElementById('active-provider-name').innerText = p.name;
+            document.getElementById('active-provider-id').innerText = p.id;
+            
+            const catBadge = document.getElementById('badge-provider-category');
+            catBadge.innerText = p.category;
+            catBadge.classList.remove('hidden');
+
+            const verifiedBadge = document.getElementById('badge-provider-verified');
+            if (p.verified) {
+                verifiedBadge.classList.remove('hidden');
+            } else {
+                verifiedBadge.classList.add('hidden');
+            }
+
+            // Populate Form
+            document.getElementById('provider-input-name').value = p.name || '';
+            document.getElementById('provider-input-id').value = p.id || '';
+            document.getElementById('provider-input-category').value = p.category || 'Captive Manager';
+            document.getElementById('provider-input-headquarters').value = p.headquarters || '';
+            document.getElementById('provider-input-website').value = p.website || '';
+            document.getElementById('provider-input-email').value = p.contact_email || '';
+            document.getElementById('provider-input-phone').value = p.contact_phone || '';
+            document.getElementById('provider-input-verified').checked = !!p.verified;
+            document.getElementById('provider-input-description').value = p.description || '';
+        }
+
         function suggestSlug(name) {
             const slugInput = document.getElementById('input-slug');
             if (!slugInput.value) {
@@ -591,7 +859,19 @@ function getAdminHtml() {
             }
         }
 
-        function filterDomiciles() {
+        function suggestProviderId(name) {
+            const idInput = document.getElementById('provider-input-id');
+            if (!idInput.value) {
+                idInput.value = name.toLowerCase()
+                    .replace(/^the\\s+/i, '')
+                    .replace(/[']/g, '')
+                    .replace(/[^a-z0-9]+/g, '-')
+                    .replace(/-+/g, '-')
+                    .replace(/^-|-$/g, '');
+            }
+        }
+
+        function filterEntities() {
             renderList();
         }
 
@@ -610,9 +890,15 @@ function getAdminHtml() {
             activeBtn.classList.add('border-red-700', 'text-red-700', 'font-semibold');
         }
 
-        async function saveCurrentDomicile() {
-            if (activeIndex === -1) return;
+        async function saveCurrentEntity() {
+            if (currentMode === 'domiciles') {
+                await saveDomicile();
+            } else {
+                await saveServiceProvider();
+            }
+        }
 
+        async function saveDomicile() {
             const name = document.getElementById('input-name').value.trim();
             const slug = document.getElementById('input-slug').value.trim();
             
@@ -621,7 +907,6 @@ function getAdminHtml() {
                 return;
             }
 
-            // Build Stats object
             const totalVal = document.getElementById('stats-total').value;
             const pureVal = document.getElementById('stats-pure').value;
             const newStats = {
@@ -638,17 +923,14 @@ function getAdminHtml() {
                 other_captives: parseInteger(document.getElementById('stats-other').value)
             };
 
-            // Only attach stats if at least one value exists
             const hasStats = Object.values(newStats).some(val => val !== null && val !== false);
 
-            // Types Allowed & Sources
             const typesText = document.getElementById('input-types-allowed').value.trim();
             const typesAllowed = typesText ? typesText.split('\\n').map(t => t.trim()).filter(Boolean) : [];
 
             const sourcesText = document.getElementById('input-sources').value.trim();
             const sourceUrls = sourcesText ? sourcesText.split('\\n').map(t => t.trim()).filter(Boolean) : [];
 
-            // Compile Save Payload
             const payload = {
                 name,
                 slug,
@@ -686,19 +968,18 @@ function getAdminHtml() {
                 }
             };
 
-            // Clean empty sub-objects if they are fully null
             if (Object.values(payload.fees).every(v => v === null)) payload.fees = null;
             if (Object.values(payload.regulator).every(v => v === null)) payload.regulator = null;
             if (Object.values(payload.captive_administrator).every(v => v === null)) payload.captive_administrator = null;
 
-            // Preserve contact coordinates at the root level if present in the administrator
-            payload.contact_name = payload.captive_administrator?.name || domicilesList[activeIndex].contact_name || null;
-            payload.contact_email = payload.captive_administrator?.email || domicilesList[activeIndex].contact_email || null;
+            if (activeIndex !== -1) {
+                payload.contact_name = payload.captive_administrator?.name || domicilesList[activeIndex].contact_name || null;
+                payload.contact_email = payload.captive_administrator?.email || domicilesList[activeIndex].contact_email || null;
+            }
 
-            // Trigger Save
             const saveBtn = document.getElementById('btn-save');
             saveBtn.disabled = true;
-            showToast('Saving data & generating static pages...', 'bg-blue-100 text-blue-700 border border-blue-200');
+            showToast('Saving domicile & rebuilding pages...', 'bg-blue-100 text-blue-700 border border-blue-200');
 
             try {
                 const response = await fetch('/api/save', {
@@ -713,9 +994,76 @@ function getAdminHtml() {
                 
                 if (result.success) {
                     showToast(result.message || 'Saved successfully!', 'bg-emerald-100 text-emerald-700 border border-emerald-200');
-                    // Update local copy
-                    domicilesList[activeIndex] = { ...domicilesList[activeIndex], ...payload };
+                    if (activeIndex === -1) {
+                        domicilesList.push(payload);
+                        domicilesList.sort((a, b) => a.name.localeCompare(b.name));
+                        activeIndex = domicilesList.findIndex(d => d.slug === payload.slug);
+                    } else {
+                        domicilesList[activeIndex] = { ...domicilesList[activeIndex], ...payload };
+                    }
                     renderList();
+                    selectDomicile(activeIndex);
+                } else {
+                    showToast(result.error || 'Failed to save.', 'bg-red-100 text-red-700 border border-red-200');
+                }
+            } catch (err) {
+                showToast('Server communication error.', 'bg-red-100 text-red-700 border border-red-200');
+            } finally {
+                saveBtn.disabled = false;
+            }
+        }
+
+        async function saveServiceProvider() {
+            const name = document.getElementById('provider-input-name').value.trim();
+            const id = document.getElementById('provider-input-id').value.trim();
+            const category = document.getElementById('provider-input-category').value;
+            const headquarters = document.getElementById('provider-input-headquarters').value.trim();
+            const website = document.getElementById('provider-input-website').value.trim();
+            
+            if (!name || !id || !category || !headquarters || !website) {
+                alert('Name, Unique ID, Category, Headquarters, and Website are required.');
+                return;
+            }
+
+            const payload = {
+                id,
+                name,
+                category,
+                headquarters,
+                website,
+                contact_email: parseString(document.getElementById('provider-input-email').value),
+                contact_phone: parseString(document.getElementById('provider-input-phone').value),
+                verified: document.getElementById('provider-input-verified').checked,
+                description: document.getElementById('provider-input-description').value.trim(),
+                logo_url: activeIndex !== -1 ? (providersList[activeIndex].logo_url || null) : null
+            };
+
+            const saveBtn = document.getElementById('btn-save');
+            saveBtn.disabled = true;
+            showToast('Saving provider & rebuilding directory...', 'bg-blue-100 text-blue-700 border border-blue-200');
+
+            try {
+                const response = await fetch('/api/service-providers/save', {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': sessionStorage.getItem('admin_password')
+                    },
+                    body: JSON.stringify(payload)
+                });
+                const result = await response.json();
+                
+                if (result.success) {
+                    showToast(result.message || 'Saved successfully!', 'bg-emerald-100 text-emerald-700 border border-emerald-200');
+                    if (activeIndex === -1) {
+                        providersList.push(payload);
+                        providersList.sort((a, b) => a.name.localeCompare(b.name));
+                        activeIndex = providersList.findIndex(p => p.id === payload.id);
+                    } else {
+                        providersList[activeIndex] = { ...providersList[activeIndex], ...payload };
+                    }
+                    renderList();
+                    selectProvider(activeIndex);
                 } else {
                     showToast(result.error || 'Failed to save.', 'bg-red-100 text-red-700 border border-red-200');
                 }
@@ -732,6 +1080,7 @@ function getAdminHtml() {
         }
 
         function parseString(val) {
+            if (!val) return null;
             const v = val.trim();
             return v ? v : null;
         }

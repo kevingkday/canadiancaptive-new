@@ -1,0 +1,62 @@
+[
+  {
+    "id": "marsh-captive-solutions",
+    "name": "Marsh Captive Solutions",
+    "category": "Captive Manager",
+    "description": "As the world's largest captive manager, Marsh manages over 1,200 captives globally, offering bespoke structuring, feasibility analysis, and full-scale regulatory administrative services.",
+    "website": "https://www.marsh.com",
+    "contact_email": "captivesolutions@marsh.com",
+    "contact_phone": "212-345-5000",
+    "headquarters": "New York, NY, USA",
+    "logo_url": null,
+    "verified": true
+  },
+  {
+    "id": "milliman-actuarial",
+    "name": "Milliman",
+    "category": "Actuary",
+    "description": "Milliman is a premier global actuarial consulting firm, providing claims reserve modeling, feasibility projections, and regulatory actuarial opinions for corporate self-insurance entities.",
+    "website": "https://www.milliman.com",
+    "contact_email": "actuaries@milliman.com",
+    "contact_phone": "206-624-7940",
+    "headquarters": "Seattle, WA, USA",
+    "logo_url": null,
+    "verified": true
+  },
+  {
+    "id": "strategic-risk-solutions",
+    "name": "Strategic Risk Solutions (SRS)",
+    "category": "Captive Manager",
+    "description": "SRS is the world's leading independent captive management firm, providing specialized formation and ongoing management services across all major onshore and offshore domiciles.",
+    "website": "https://www.strategicrisks.com",
+    "contact_email": "info@strategicrisks.com",
+    "contact_phone": "781-660-3555",
+    "headquarters": "Concord, MA, USA",
+    "logo_url": null,
+    "verified": true
+  },
+  {
+    "id": "test-captive-services",
+    "name": "Test Captive Services",
+    "category": "Captive Manager",
+    "headquarters": "Toronto, ON, Canada",
+    "website": "https://www.testcaptiveservices.ca",
+    "contact_email": null,
+    "contact_phone": null,
+    "verified": true,
+    "description": "A leading independent manager based in Toronto, Canada providing premium captives support.",
+    "logo_url": null
+  },
+  {
+    "id": "zurich-fronting-services",
+    "name": "Zurich North America Fronting",
+    "category": "Fronting Carrier",
+    "description": "Zurich provides leading admitted fronting capabilities across Canada and the United States, issuing local compliant policies backed by captive reinsurance structures.",
+    "website": "https://www.zurichna.com",
+    "contact_email": "fronting.inquiries@zurich.com",
+    "contact_phone": "800-382-2150",
+    "headquarters": "Schaumburg, IL, USA",
+    "logo_url": null,
+    "verified": true
+  }
+]
