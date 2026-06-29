@@ -1,7 +1,7 @@
 [
   {
     "name": "Abu Dhabi",
-    "summary": "Operating as the Abu Dhabi Global Market (ADGM), this jurisdiction uses the direct application of English common law and provides a flexible, risk-based captive framework. It offers a dedicated rulebook and a streamlined application process with four distinct classes of captive insurers to meet varied business needs. A major benefit is the 0% tax environment guaranteed until 2065, along with the ability to outsource all management functions to ADGM-authorized managers.",
+    "summary": "Operating as the Abu Dhabi Global Market (ADGM), this jurisdiction uses the direct application of English common law and provides a flexible, risk-based captive framework. It offers a dedicated rulebook and a streamlined application process with four distinct classes of captive insurers to meet varied business needs. A major benefit is the 0% tax environment guaranteed until 2065, along with the ability to outsource all management functions to ADGM-authorized managers. test",
     "jurisdiction": "Offshore (UAE)",
     "legislation": "ADGM Captive Insurance Rulebook",
     "min_capital": {
@@ -15,7 +15,16 @@
     "contact_name": null,
     "contact_email": null,
     "last_verified": null,
-    "source_urls": []
+    "source_urls": [],
+    "legislation_year": null,
+    "licensing_speed": null,
+    "regulator_staff_count": null,
+    "annual_filing_requirements": null,
+    "types_allowed": [],
+    "stats": null,
+    "fees": null,
+    "regulator": null,
+    "captive_administrator": null
   },
   {
     "name": "Alabama",
