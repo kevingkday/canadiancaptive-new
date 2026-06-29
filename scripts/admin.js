@@ -5,6 +5,7 @@
  * Serves an interactive visual form at http://localhost:3000 to edit JSON data
  * and auto-triggers static page generation on save.
  * 
+ * Secure password protection is enabled for all write/read API endpoints.
  * Run command: node scripts/admin.js
  */
 
@@ -13,16 +14,19 @@ const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const ROOT = path.join(__dirname, '..');
 const DATA_FILE = path.join(ROOT, 'data', 'domiciles.json');
 const REBUILD_SCRIPT = path.join(ROOT, 'scripts', 'generate-domiciles.js');
+
+// Set your password here or specify it as an environment variable (e.g. ADMIN_PASSWORD=mysecret)
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'canadian-captive-2026';
 
 const server = http.createServer((req, res) => {
     // CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
     if (req.method === 'OPTIONS') {
         res.writeHead(200);
@@ -30,12 +34,22 @@ const server = http.createServer((req, res) => {
         return;
     }
 
+    // 1. Serve the frontend console (No password required to fetch the HTML itself)
     if (req.method === 'GET' && req.url === '/') {
         res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
         res.end(getAdminHtml());
         return;
     }
 
+    // 2. Authenticate API endpoints
+    const authHeader = req.headers['authorization'];
+    if (authHeader !== ADMIN_PASSWORD) {
+        res.writeHead(401, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ error: 'Unauthorized. Invalid password.' }));
+        return;
+    }
+
+    // 3. API: Load Domiciles
     if (req.method === 'GET' && req.url === '/api/domiciles') {
         fs.readFile(DATA_FILE, 'utf8', (err, data) => {
             if (err) {
@@ -49,6 +63,7 @@ const server = http.createServer((req, res) => {
         return;
     }
 
+    // 4. API: Save Domicile & Rebuild
     if (req.method === 'POST' && req.url === '/api/save') {
         let body = '';
         req.on('data', chunk => {
@@ -124,6 +139,7 @@ server.listen(PORT, () => {
     console.log(`==================================================`);
     console.log(` Domicile Data Manager is running locally!`);
     console.log(` Access interface: http://localhost:${PORT}`);
+    console.log(` Default Password: canadian-captive-2026`);
     console.log(` Press Ctrl+C to shut down the server.`);
     console.log(`==================================================`);
 });
@@ -143,6 +159,23 @@ function getAdminHtml() {
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+    <!-- Login Overlay -->
+    <div id="login-overlay" class="fixed inset-0 bg-slate-900 flex flex-col items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-xl shadow-2xl max-w-md w-full mx-4 border border-slate-200 text-center">
+            <span class="material-symbols-outlined text-red-700 text-5xl mb-4">lock</span>
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">Password Protected</h2>
+            <p class="text-sm text-slate-500 mb-6">Enter password to manage CanadianCaptive Domiciles.</p>
+            
+            <form onsubmit="tryLogin(event)" class="space-y-4">
+                <input type="password" id="login-password" required placeholder="Enter password" class="w-full px-4 py-2.5 border border-slate-200 rounded-lg text-sm text-center focus:outline-none focus:border-red-700">
+                <button type="submit" id="btn-login" class="w-full bg-red-700 text-white font-semibold py-2.5 rounded-lg hover:bg-red-800 shadow transition-all">
+                    Unlock Console
+                </button>
+            </form>
+            <p id="login-error" class="text-xs text-red-600 font-semibold mt-3 hidden"></p>
+        </div>
+    </div>
+
     <!-- Header -->
     <header class="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
         <div class="flex items-center gap-3">
@@ -401,17 +434,45 @@ function getAdminHtml() {
         let domicilesList = [];
         let activeIndex = -1;
 
-        // Fetch all domiciles on page load
-        async function loadDomiciles() {
+        async function tryLogin(e) {
+            if (e) e.preventDefault();
+            const password = document.getElementById('login-password').value.trim();
+            const btn = document.getElementById('btn-login');
+            const err = document.getElementById('login-error');
+
+            btn.disabled = true;
+            err.classList.add('hidden');
+
             try {
-                const response = await fetch('/api/domiciles');
-                domicilesList = await response.json();
-                renderList();
-                if (domicilesList.length > 0) {
-                    selectDomicile(0);
+                const response = await fetch('/api/domiciles', {
+                    headers: { 'Authorization': password }
+                });
+                
+                if (response.status === 200) {
+                    sessionStorage.setItem('admin_password', password);
+                    domicilesList = await response.json();
+                    document.getElementById('login-overlay').classList.add('hidden');
+                    renderList();
+                    if (domicilesList.length > 0) {
+                        selectDomicile(0);
+                    }
+                } else {
+                    err.innerText = 'Incorrect password.';
+                    err.classList.remove('hidden');
                 }
-            } catch (err) {
-                showToast('Failed to load domiciles data.', 'bg-red-100 text-red-700 border border-red-200');
+            } catch (fetchErr) {
+                err.innerText = 'Server communication error.';
+                err.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        function checkSession() {
+            const savedPassword = sessionStorage.getItem('admin_password');
+            if (savedPassword) {
+                document.getElementById('login-password').value = savedPassword;
+                tryLogin();
             }
         }
 
@@ -642,7 +703,10 @@ function getAdminHtml() {
             try {
                 const response = await fetch('/api/save', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': sessionStorage.getItem('admin_password')
+                    },
                     body: JSON.stringify(payload)
                 });
                 const result = await response.json();
@@ -682,8 +746,8 @@ function getAdminHtml() {
             }, 4000);
         }
 
-        // Initialize
-        loadDomiciles();
+        // Initialize session check on load
+        checkSession();
     </script>
 </body>
 </html>`;
