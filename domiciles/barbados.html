@@ -175,7 +175,11 @@
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Tax Environment</div>
                                     <div class="font-semibold text-on-surface">0% for Class 1; 2% for Class 2 and Class 3 entities</div>
                                 </div>
-                                
+                                <div class="border-t border-outline-variant/10 pt-5">
+                                    <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Contact</div>
+                                    <div class="font-semibold text-on-surface">Kester Guy</div>
+                                    <a href="mailto:kguy@fsc.gov.bb" class="text-primary text-sm hover:underline">kguy@fsc.gov.bb</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,7 +208,7 @@
                                 </thead>
                                 <tbody class="divide-y divide-outline-variant/10">
                             <tr class="border-b border-outline-variant/10 last:border-0">
-                                <td class="py-4 pr-8 text-on-surface font-medium">Insurance Companies</td>
+                                <td class="py-4 pr-8 text-on-surface font-medium">Class 1 (related risks)</td>
                                 <td class="py-4 text-secondary">$125,000</td>
                             </tr>
                                 </tbody>
@@ -248,11 +252,66 @@
                     <!-- Column 1: Market & Structures -->
                     <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8">
                         
-            <div class="col-span-full bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 text-center py-12">
-                <span class="material-symbols-outlined text-4xl text-slate-300 mb-2">analytics</span>
-                <p class="text-secondary italic">Statistical profile pending verification for this domicile.</p>
+        <!-- Domicile Statistics -->
+        <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+            <div>
+                <h4 class="font-bold text-lg mb-6 text-on-surface flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-xl">bar_chart</span>
+                    Captive Market Volume
+                </h4>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Reporting Year</span>
+                        <span class="font-semibold text-on-surface">2025</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Total Active Captives</span>
+                        <span class="font-bold text-primary text-base">276</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">New Captives Licensed</span>
+                        <span class="font-semibold text-on-surface">3</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-1 text-sm">
+                        <span class="text-secondary">Surrendered Licenses</span>
+                        <span class="font-semibold text-on-surface">11</span>
+                    </div>
+                </div>
             </div>
-        
+        </div>
+
+        <!-- Captive Breakdown -->
+        <div class="bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10 flex flex-col justify-between">
+            <div>
+                <h4 class="font-bold text-lg mb-6 text-on-surface flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-xl">pie_chart</span>
+                    Structure Distribution
+                </h4>
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Pure / Single Parent</span>
+                        <span class="font-semibold text-on-surface">163</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Group / Association</span>
+                        <span class="font-semibold text-on-surface">0</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Sponsored / Cell Captives</span>
+                        <span class="font-semibold text-on-surface">28</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-outline-variant/10 pb-3 text-sm">
+                        <span class="text-secondary">Individual Segregated Cells</span>
+                        <span class="font-semibold text-on-surface">Pending verification</span>
+                    </div>
+                    <div class="flex justify-between items-center pb-1 text-sm">
+                        <span class="text-secondary">Other Allowed Types</span>
+                        <span class="font-semibold text-on-surface">85</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
                         
                         <!-- Types Allowed Card -->
                         <div class="col-span-full bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-outline-variant/10">
@@ -260,7 +319,9 @@
                                 <span class="material-symbols-outlined text-primary text-xl">checklist</span>
                                 Authorized Captive Structures
                             </h4>
-                            <p class="text-secondary italic">List of authorized captive structures pending verification.</p>
+                            <div class="flex flex-wrap gap-2">
+                                     <span class="bg-surface-container-low text-on-surface px-3.5 py-1.5 rounded-lg text-sm border border-outline-variant/10 font-medium">Single parent captives</span><span class="bg-surface-container-low text-on-surface px-3.5 py-1.5 rounded-lg text-sm border border-outline-variant/10 font-medium">Association captives</span><span class="bg-surface-container-low text-on-surface px-3.5 py-1.5 rounded-lg text-sm border border-outline-variant/10 font-medium">Group captives</span><span class="bg-surface-container-low text-on-surface px-3.5 py-1.5 rounded-lg text-sm border border-outline-variant/10 font-medium">Protected cell/segregated portfolio companies</span><span class="bg-surface-container-low text-on-surface px-3.5 py-1.5 rounded-lg text-sm border border-outline-variant/10 font-medium">Risk retention groups</span>
+                                   </div>
                         </div>
                     </div>
 
@@ -275,27 +336,27 @@
                             <div class="space-y-4">
                                 <div>
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Year Legislation Passed</div>
-                                    <div class="font-semibold text-on-surface text-sm"><span class="text-slate-400 italic font-normal">Pending verification</span></div>
+                                    <div class="font-semibold text-on-surface text-sm">1983</div>
                                 </div>
                                 <div class="border-t border-outline-variant/10 pt-4">
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Licensing Speed</div>
-                                    <div class="font-semibold text-on-surface text-sm"><span class="text-slate-400 italic font-normal">Pending verification</span></div>
+                                    <div class="font-semibold text-on-surface text-sm">3 weeks</div>
                                 </div>
                                 <div class="border-t border-outline-variant/10 pt-4">
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Premium Tax Rate</div>
-                                    <div class="font-semibold text-on-surface text-sm"><span class="text-slate-400 italic font-normal">Pending verification</span></div>
+                                    <div class="font-semibold text-on-surface text-sm">Class 1: none; Class 2: 2% on first $250k taxable income; Class 3: 2% (intermediaries, managers, holdings). Special FET exemption (1-4%) if Barbados-domiciled.</div>
                                 </div>
                                 <div class="border-t border-outline-variant/10 pt-4">
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Incorporation / Initial Fee</div>
-                                    <div class="font-semibold text-secondary text-sm"><span class="text-slate-400 italic font-normal">Pending verification</span></div>
+                                    <div class="font-semibold text-secondary text-sm">$1,000 BDS</div>
                                 </div>
                                 <div class="border-t border-outline-variant/10 pt-4">
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Annual Maintenance Fee</div>
-                                    <div class="font-semibold text-secondary text-sm"><span class="text-slate-400 italic font-normal">Pending verification</span></div>
+                                    <div class="font-semibold text-secondary text-sm">2019-0.03% of total assets or minimum of $30,000 BDS; 2020-0.04% of total assets or minimum of $40,000 BDS; 2021-0.05% of total assets or minimum of $50,000 BDS</div>
                                 </div>
                                 <div class="border-t border-outline-variant/10 pt-4">
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Annual Filing Requirements</div>
-                                    <div class="font-semibold text-secondary text-sm"><span class="text-slate-400 italic font-normal">Pending verification</span></div>
+                                    <div class="font-semibold text-secondary text-sm">Meeting required in domicile.</div>
                                 </div>
                             </div>
                         </div>
@@ -309,23 +370,23 @@
                             <div class="space-y-4">
                                 <div>
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Supervisory Authority</div>
-                                    <div class="font-semibold text-on-surface text-sm"><span class="text-slate-400 italic font-normal">Pending verification</span></div>
-                                    
+                                    <div class="font-semibold text-on-surface text-sm">Financial Services Commission</div>
+                                    <a href="https://www.fsc.gov.bb" target="_blank" rel="noopener noreferrer" class="text-primary text-xs hover:underline flex items-center gap-1 mt-1">https://www.fsc.gov.bb <span class="material-symbols-outlined text-[10px]">open_in_new</span></a>
                                 </div>
                                 <div class="border-t border-outline-variant/10 pt-4">
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Office Address</div>
-                                    <div class="font-semibold text-secondary text-sm"><span class="text-slate-400 italic font-normal">Pending verification</span></div>
+                                    <div class="font-semibold text-secondary text-sm">Harbour Industrial Park, Building 4, Suites 301 & 302, St. Michael, BB11142</div>
                                 </div>
                                 <div class="border-t border-outline-variant/10 pt-4">
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Regulatory Department Staff</div>
-                                    <div class="font-semibold text-on-surface text-sm"><span class="text-slate-400 italic font-normal">Pending verification</span></div>
+                                    <div class="font-semibold text-on-surface text-sm">8 FTEs</div>
                                 </div>
                                 <div class="border-t border-outline-variant/10 pt-4">
                                     <div class="text-xs font-label uppercase tracking-widest text-secondary mb-1">Captive Administrator</div>
-                                    <div class="font-semibold text-on-surface text-sm"><span class="text-slate-400 italic font-normal">Pending verification</span></div>
-                                    
-                                    
-                                    
+                                    <div class="font-semibold text-on-surface text-sm">Kester Guy</div>
+                                    <a href="mailto:kguy@fsc.gov.bb" class="text-primary text-xs block hover:underline mt-1">kguy@fsc.gov.bb</a>
+                                    <div class="text-xs text-secondary mt-1">Phone: 246-421-2142</div>
+                                    <div class="text-xs text-secondary mt-0.5">Fax: 246-421-2146</div>
                                 </div>
                             </div>
                         </div>

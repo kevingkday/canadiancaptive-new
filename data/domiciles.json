@@ -178,14 +178,55 @@
     "jurisdiction": "Offshore",
     "legislation": "Insurance Act, Cap. 310 (effective 2019)",
     "min_capital": {
-      "Insurance Companies": "$125,000"
+      "Class 1 (related risks)": "$125,000"
     },
     "tax_notes": "0% for Class 1; 2% for Class 2 and Class 3 entities",
+    "contact_name": "Kester Guy",
+    "contact_email": "kguy@fsc.gov.bb",
+    "last_verified": "2026-06-29",
+    "source_urls": [
+      "https://www.fsc.gov.bb"
+    ],
     "slug": "barbados",
-    "contact_name": null,
-    "contact_email": null,
-    "last_verified": null,
-    "source_urls": []
+    "legislation_year": 1983,
+    "stats": {
+      "reporting_year": 2025,
+      "total_captives": 276,
+      "new_captives": 3,
+      "surrendered_licenses": 11,
+      "pure_captives": 163,
+      "group_captives": 0,
+      "sponsored_cell_captives": 28,
+      "individual_cells_count": 0,
+      "other_captives": 85
+    },
+    "types_allowed": [
+      "Single parent captives",
+      "Association captives",
+      "Group captives",
+      "Protected cell/segregated portfolio companies",
+      "Risk retention groups"
+    ],
+    "regulator_staff_count": "8",
+    "fees": {
+      "licensing_incorporation": "$1,000 BDS",
+      "annual_fees": "2019-0.03% of total assets or minimum of $30,000 BDS; 2020-0.04% of total assets or minimum of $40,000 BDS; 2021-0.05% of total assets or minimum of $50,000 BDS",
+      "premium_tax_rate": "Class 1: none; Class 2: 2% on first $250k taxable income; Class 3: 2% (intermediaries, managers, holdings). Special FET exemption (1-4%) if Barbados-domiciled."
+    },
+    "annual_filing_requirements": "Meeting required in domicile.",
+    "applicable_legislation": "Exempt Insurance Act CAP. 308A; Insurance Act CAP. 310; Financial Services Commission Act, 2010-21.",
+    "captive_administrator": {
+      "name": "Kester Guy",
+      "email": "kguy@fsc.gov.bb",
+      "phone": "246-421-2142",
+      "fax": "246-421-2146"
+    },
+    "licensing_speed": "3 weeks",
+    "regulator": {
+      "name": "Financial Services Commission",
+      "address": "Harbour Industrial Park, Building 4, Suites 301 & 302, St. Michael, BB11142",
+      "website": "https://www.fsc.gov.bb"
+    }
   },
   {
     "name": "Bermuda",
